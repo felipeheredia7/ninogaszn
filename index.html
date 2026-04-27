@@ -1,0 +1,3282 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="theme-color" content="#0a4ea3" />
+<meta name="description" content="Nino Gás & Água Mineral — Entrega rápida de gás e água na Zona Norte de Porto Alegre. Peça pelo WhatsApp." />
+<title>Nino Gás &amp; Água Mineral — Entrega rápida na Zona Norte</title>
+
+<link rel="icon" type="image/png" href="assets/mascote.png" />
+<link rel="apple-touch-icon" href="assets/mascote.png" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&display=swap" rel="stylesheet">
+
+<style>
+/* ============ RESET & BASE ============ */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+input, textarea, select { font-family: inherit; font-size: inherit; }
+
+/* ============ TOKENS ============ */
+:root {
+  --blue-50:  #eaf2fb;
+  --blue-100: #cfe0f5;
+  --blue-500: #0a4ea3;
+  --blue-600: #084386;
+  --blue-700: #062f64;
+  --orange:   #ff6a13;
+  --orange-dark: #e85a05;
+  --green:    #1ca94c;
+  --red:      #e23b3b;
+  --bg:       #f5f6f8;
+  --surface:  #ffffff;
+  --border:   #e5e7eb;
+  --border-2: #d6d9df;
+  --text:     #0e1726;
+  --muted:    #5a6478;
+  --muted-2:  #8a92a3;
+  --shadow-sm: 0 1px 2px rgba(14,23,38,.06);
+  --shadow:    0 4px 14px rgba(14,23,38,.08);
+  --shadow-lg: 0 18px 50px rgba(14,23,38,.18);
+  --radius:    12px;
+  --radius-lg: 18px;
+  --container: 1240px;
+}
+
+/* ============ UTILITIES ============ */
+.container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 16px; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 12px 18px; border-radius: 10px; font-weight: 700; font-size: 14px;
+  transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--orange); color: #fff; box-shadow: 0 6px 16px rgba(255,106,19,.35); }
+.btn-primary:hover { background: var(--orange-dark); transform: translateY(-1px); }
+.btn-primary:disabled { background: #cfd3db; color: #fff; box-shadow: none; cursor: not-allowed; transform: none; }
+.btn-ghost { background: var(--surface); color: var(--blue-500); border: 1.5px solid var(--blue-100); }
+.btn-ghost:hover { background: var(--blue-50); }
+.btn-block { width: 100%; padding: 14px 18px; font-size: 15px; }
+.btn-whats { background: #25d366; color: #fff; box-shadow: 0 6px 16px rgba(37,211,102,.35); }
+.btn-whats:hover { background: #1ebc5c; transform: translateY(-1px); }
+
+.sr-only { position: absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+
+/* ============ HEADER ============ */
+.header {
+  position: sticky; top: 0; z-index: 80;
+  background: linear-gradient(180deg, var(--blue-500) 0%, var(--blue-600) 100%);
+  color: #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,.12);
+}
+.header-top { padding: 12px 0; }
+.header-grid {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 14px;
+  align-items: center;
+}
+.logo {
+  display: flex; align-items: center; gap: 10px; text-decoration: none; color: #fff;
+}
+.logo-mark {
+  width: 44px; height: 44px; border-radius: 50%;
+  background: #fff;
+  display: grid; place-items: center;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,.18);
+}
+.logo-mark img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; transform: scale(1.1); }
+.logo-text { line-height: 1.05; }
+.logo-text .brand {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800; font-size: 20px; letter-spacing: -0.02em;
+  display: block;
+}
+.logo-text .sub { font-size: 11px; opacity: .85; font-weight: 500; letter-spacing: .02em; }
+
+.search {
+  position: relative;
+  display: flex; align-items: center;
+  background: #fff; border-radius: 10px;
+  padding: 0 12px;
+  box-shadow: var(--shadow-sm);
+  height: 44px;
+}
+.search svg { color: var(--muted); flex-shrink: 0; }
+.search input {
+  flex: 1; border: none; outline: none; padding: 0 10px;
+  background: transparent; color: var(--text); font-size: 14px;
+}
+.search input::placeholder { color: var(--muted-2); }
+
+.header-actions { display: flex; align-items: center; gap: 10px; }
+
+.status-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 12px; border-radius: 999px;
+  background: rgba(255,255,255,.12);
+  font-size: 13px; font-weight: 700;
+  color: #fff;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,.18);
+}
+.status-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 0 0 rgba(226,59,59,.6);
+}
+.status-badge.is-open .status-dot {
+  background: #2bd86c;
+  animation: pulse 1.8s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(43,216,108,.55); }
+  70% { box-shadow: 0 0 0 8px rgba(43,216,108,0); }
+  100% { box-shadow: 0 0 0 0 rgba(43,216,108,0); }
+}
+
+.cart-btn {
+  position: relative;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.14);
+  color: #fff;
+  display: grid; place-items: center;
+  border: 1px solid rgba(255,255,255,.18);
+  transition: background .15s;
+}
+.cart-btn:hover { background: rgba(255,255,255,.22); }
+.cart-count {
+  position: absolute; top: -4px; right: -4px;
+  min-width: 22px; height: 22px; padding: 0 6px;
+  border-radius: 999px;
+  background: var(--orange);
+  color: #fff; font-weight: 800; font-size: 11px;
+  display: grid; place-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,.25);
+  border: 2px solid var(--blue-500);
+}
+.cart-count.hidden { display: none; }
+
+/* ============ HERO ============ */
+.hero {
+  position: relative;
+  background: var(--blue-700);
+  color: #fff;
+  overflow: hidden;
+}
+.hero-media {
+  position: absolute; inset: 0;
+  background-image: url('assets/hero.png');
+  background-size: cover;
+  background-position: center;
+  opacity: .55;
+}
+.hero-media::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(6,47,100,.25) 0%, rgba(6,47,100,.85) 80%, rgba(6,47,100,1) 100%),
+              linear-gradient(90deg, rgba(6,47,100,.7) 0%, rgba(6,47,100,.2) 50%, rgba(6,47,100,.7) 100%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  padding: 56px 16px 64px;
+  max-width: var(--container);
+  margin: 0 auto;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.25);
+  padding: 6px 12px; border-radius: 999px;
+  font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+}
+.hero-eyebrow .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+.hero h1 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-weight: 800;
+  font-size: clamp(28px, 5vw, 46px);
+  line-height: 1.05;
+  letter-spacing: -0.025em;
+  margin: 14px 0 12px;
+  max-width: 780px;
+}
+.hero h1 .accent { color: #ffd180; }
+.hero p {
+  font-size: clamp(15px, 2vw, 17px);
+  max-width: 580px;
+  opacity: .92;
+  margin-bottom: 22px;
+}
+.hero-cta { display: flex; flex-wrap: wrap; gap: 10px; }
+.hero-perks {
+  display: flex; flex-wrap: wrap; gap: 18px;
+  margin-top: 28px;
+  font-size: 13px; font-weight: 600;
+  opacity: .95;
+}
+.hero-perks span { display: inline-flex; align-items: center; gap: 6px; }
+.hero-perks svg { color: #ffd180; }
+
+/* ============ SECTION ============ */
+.section { padding: 36px 0; }
+.section-head {
+  display: flex; flex-wrap: wrap; align-items: end;
+  justify-content: space-between; gap: 12px;
+  margin-bottom: 20px;
+}
+.section-head h2 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--blue-700);
+}
+.section-head p { color: var(--muted); font-size: 14px; }
+
+/* ============ CATEGORY TABS ============ */
+.tabs {
+  display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 12px;
+  scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+  flex-shrink: 0;
+  padding: 10px 16px; border-radius: 999px;
+  background: var(--surface);
+  color: var(--blue-700);
+  font-weight: 700; font-size: 14px;
+  border: 1.5px solid var(--border);
+  transition: all .15s ease;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.tab:hover { border-color: var(--blue-500); }
+.tab .count {
+  background: var(--bg); color: var(--muted);
+  padding: 2px 8px; border-radius: 999px;
+  font-size: 11px; font-weight: 700;
+}
+.tab.active {
+  background: var(--blue-500); color: #fff; border-color: var(--blue-500);
+  box-shadow: 0 4px 12px rgba(10,78,163,.3);
+}
+.tab.active .count { background: rgba(255,255,255,.22); color: #fff; }
+
+/* ============ PRODUCT GRID ============ */
+.grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 640px) { .grid { grid-template-columns: repeat(3, 1fr); gap: 16px; } }
+@media (min-width: 960px) { .grid { grid-template-columns: repeat(4, 1fr); gap: 18px; } }
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  cursor: pointer;
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--blue-100);
+}
+.card-img {
+  aspect-ratio: 1 / 1;
+  background: #f0f2f5;
+  display: grid; place-items: center;
+  overflow: hidden;
+  position: relative;
+}
+.card-img img {
+  width: 88%; height: 88%; object-fit: contain;
+  transition: transform .3s ease;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,.08));
+}
+.card:hover .card-img img { transform: scale(1.05); }
+.card-tag {
+  position: absolute; top: 10px; left: 10px;
+  padding: 4px 9px; border-radius: 6px;
+  background: var(--blue-700); color: #fff;
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  z-index: 3;
+  box-shadow: 0 2px 6px rgba(0,0,0,.18);
+}
+.card-body {
+  padding: 12px 14px 14px;
+  display: flex; flex-direction: column; gap: 6px;
+  flex: 1;
+}
+.card-add-btn {
+  margin-top: 10px;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 11px 12px;
+  background: var(--orange);
+  color: #fff;
+  border-radius: 9px;
+  font-weight: 800; font-size: 13px;
+  letter-spacing: .01em;
+  box-shadow: 0 4px 12px rgba(255,106,19,.3);
+  transition: background .15s ease, transform .15s ease, box-shadow .15s ease;
+  width: 100%;
+}
+.card-add-btn:hover {
+  background: var(--orange-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(255,106,19,.4);
+}
+.card-add-btn:active { transform: translateY(0); }
+.card-add-btn svg { flex-shrink: 0; }
+.card-title {
+  font-weight: 700; font-size: 14px;
+  color: var(--text);
+  line-height: 1.3;
+  display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 2.6em;
+}
+.card-desc {
+  font-size: 12px; color: var(--muted); line-height: 1.4;
+  display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.card-price-row { margin-top: auto; padding-top: 8px; }
+.card-price-from {
+  font-size: 11px; color: var(--muted); font-weight: 600;
+}
+.card-price {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 22px; font-weight: 800;
+  color: var(--blue-700);
+  letter-spacing: -.02em;
+  line-height: 1.1;
+}
+.card-price small { font-size: 13px; font-weight: 700; opacity: .8; }
+.card-cta {
+  margin-top: 8px;
+  display: flex; align-items: center; justify-content: center;
+  padding: 6px 12px;
+  color: var(--blue-500);
+  font-weight: 700; font-size: 12.5px;
+  transition: color .15s ease;
+  gap: 6px;
+}
+.card:hover .card-cta { color: var(--blue-700); }
+.card-cta svg { transition: transform .15s ease; }
+.card:hover .card-cta svg { transform: translateX(3px); }
+
+@media (min-width: 640px) {
+  .card-title { font-size: 15px; }
+  .card-price { font-size: 24px; }
+}
+
+/* ============ MODAL ============ */
+.modal-backdrop {
+  position: fixed; inset: 0; z-index: 90;
+  background: rgba(14,23,38,.55);
+  backdrop-filter: blur(4px);
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease;
+}
+.modal-backdrop.open { opacity: 1; pointer-events: auto; }
+.modal {
+  position: fixed; z-index: 91;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%) scale(.96);
+  width: min(960px, calc(100% - 24px));
+  max-height: calc(100vh - 32px);
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+  display: flex; flex-direction: column;
+}
+.modal.open { opacity: 1; pointer-events: auto; transform: translate(-50%, -50%) scale(1); }
+.modal-close {
+  position: absolute; top: 12px; right: 12px;
+  width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255,255,255,.9);
+  color: var(--text);
+  display: grid; place-items: center;
+  z-index: 2;
+  box-shadow: var(--shadow-sm);
+  transition: background .15s;
+}
+.modal-close:hover { background: var(--bg); }
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  overflow: auto;
+  flex: 1;
+}
+@media (min-width: 760px) { .modal-grid { grid-template-columns: 1.05fr 1fr; } }
+
+.modal-img {
+  background: linear-gradient(135deg, #f0f4f8 0%, #e6ecf3 100%);
+  aspect-ratio: 1 / 1;
+  display: grid; place-items: center;
+  padding: 24px;
+}
+.modal-img img { max-width: 78%; max-height: 78%; object-fit: contain; filter: drop-shadow(0 14px 24px rgba(0,0,0,.12)); }
+@media (min-width: 760px) {
+  .modal-img { aspect-ratio: auto; height: 100%; min-height: 380px; }
+}
+
+.modal-info { padding: 24px; display: flex; flex-direction: column; gap: 14px; overflow: auto; }
+.modal-cat {
+  display: inline-block;
+  padding: 4px 10px; border-radius: 6px;
+  background: var(--blue-50); color: var(--blue-700);
+  font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .05em;
+  width: fit-content;
+}
+.modal-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 24px; font-weight: 800;
+  color: var(--text); letter-spacing: -.02em;
+  line-height: 1.15;
+}
+.modal-desc { color: var(--muted); font-size: 14px; line-height: 1.55; }
+.modal-price {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 34px; font-weight: 800;
+  color: var(--blue-700); letter-spacing: -.025em;
+  line-height: 1;
+}
+.modal-price small { font-size: 18px; }
+.modal-price-label { font-size: 12px; color: var(--muted); font-weight: 600; margin-bottom: 2px; }
+
+.variation-block { margin-top: 4px; }
+.variation-block .label {
+  font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 8px;
+  display: flex; align-items: center; gap: 6px;
+}
+.variation-block .label .req { color: var(--orange); }
+.variation-list { display: flex; flex-direction: column; gap: 8px; }
+.variation-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 14px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+  position: relative;
+}
+.variation-item:hover { border-color: var(--blue-500); }
+.variation-item input { position: absolute; opacity: 0; pointer-events: none; }
+.variation-item .radio {
+  width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid var(--border-2);
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  transition: border-color .15s;
+}
+.variation-item .radio::after {
+  content: ''; width: 8px; height: 8px; border-radius: 50%; background: var(--blue-500);
+  transform: scale(0); transition: transform .15s;
+}
+.variation-item.selected { border-color: var(--blue-500); background: var(--blue-50); }
+.variation-item.selected .radio { border-color: var(--blue-500); }
+.variation-item.selected .radio::after { transform: scale(1); }
+.variation-item .v-name { flex: 1; font-weight: 600; font-size: 14px; }
+.variation-item .v-price { font-weight: 800; color: var(--blue-700); font-size: 14px; }
+
+.qty-row { display: flex; align-items: center; gap: 14px; margin-top: 6px; }
+.qty-row .label { font-size: 13px; font-weight: 700; }
+.qty-control {
+  display: inline-flex; align-items: center;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.qty-control button {
+  width: 40px; height: 40px;
+  font-size: 18px; font-weight: 700;
+  color: var(--blue-700);
+  transition: background .15s;
+}
+.qty-control button:hover { background: var(--blue-50); }
+.qty-control button:disabled { color: var(--muted-2); cursor: not-allowed; }
+.qty-control .qty {
+  min-width: 40px; text-align: center;
+  font-weight: 800; font-size: 15px;
+}
+
+.modal-actions { margin-top: auto; padding-top: 8px; }
+
+/* ============ CART DRAWER ============ */
+.drawer {
+  position: fixed; top: 0; right: 0; bottom: 0;
+  width: min(420px, 100%);
+  background: var(--surface);
+  z-index: 91;
+  display: flex; flex-direction: column;
+  transform: translateX(100%);
+  transition: transform .3s ease;
+  box-shadow: var(--shadow-lg);
+}
+.drawer.open { transform: translateX(0); }
+.drawer-head {
+  padding: 18px 20px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+}
+.drawer-head h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 20px; font-weight: 800; color: var(--blue-700);
+  display: flex; align-items: center; gap: 10px;
+}
+.drawer-close {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--bg); display: grid; place-items: center;
+  transition: background .15s;
+}
+.drawer-close:hover { background: var(--border); }
+
+.drawer-body {
+  flex: 1; overflow-y: auto;
+  padding: 16px 20px;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.drawer-empty {
+  text-align: center; padding: 40px 16px;
+  color: var(--muted);
+}
+.drawer-empty svg { color: var(--muted-2); margin: 0 auto 12px; }
+.drawer-empty h4 { font-weight: 700; color: var(--text); margin-bottom: 4px; }
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  align-items: start;
+}
+.cart-item-img {
+  aspect-ratio: 1; background: #f0f2f5; border-radius: 8px;
+  display: grid; place-items: center; padding: 6px;
+}
+.cart-item-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.cart-item-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.cart-item-name { font-weight: 700; font-size: 13px; line-height: 1.3; }
+.cart-item-variation { font-size: 11px; color: var(--muted); font-weight: 600; }
+.cart-item-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
+.cart-item-price { font-weight: 800; color: var(--blue-700); font-size: 14px; }
+.cart-qty {
+  display: inline-flex; align-items: center;
+  background: var(--bg); border-radius: 8px;
+}
+.cart-qty button {
+  width: 28px; height: 28px; font-size: 14px; font-weight: 700;
+  color: var(--blue-700);
+}
+.cart-qty .q { min-width: 24px; text-align: center; font-weight: 800; font-size: 13px; }
+.cart-item-remove {
+  font-size: 11px; color: var(--red); font-weight: 700;
+  margin-top: 4px; padding: 0; background: none;
+  text-align: left;
+}
+.cart-item-remove:hover { text-decoration: underline; }
+
+.drawer-foot {
+  border-top: 1px solid var(--border);
+  padding: 16px 20px 18px;
+  background: var(--surface);
+}
+.subtotal-row {
+  display: flex; justify-content: space-between; align-items: baseline;
+  margin-bottom: 12px;
+}
+.subtotal-row .label { font-size: 13px; color: var(--muted); font-weight: 600; }
+.subtotal-row .value {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 26px; font-weight: 800; color: var(--blue-700);
+  letter-spacing: -.02em;
+}
+.subtotal-row .value small { font-size: 14px; }
+
+/* ============ CHECKOUT ============ */
+.checkout {
+  padding: 16px 20px;
+  display: flex; flex-direction: column; gap: 12px;
+  flex: 1; overflow-y: auto;
+}
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field label {
+  font-size: 12px; font-weight: 700; color: var(--text);
+  text-transform: uppercase; letter-spacing: .05em;
+}
+.field label .req { color: var(--orange); }
+.field input, .field textarea, .field select {
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  background: #fff;
+  color: var(--text);
+  transition: border-color .15s;
+  width: 100%;
+}
+.field input:focus, .field textarea:focus, .field select:focus {
+  outline: none;
+  border-color: var(--blue-500);
+}
+.field textarea { resize: vertical; min-height: 90px; }
+.field .hint { font-size: 11px; color: var(--muted); }
+.field-error { font-size: 11px; color: var(--red); font-weight: 600; }
+
+.checkout-summary {
+  background: var(--blue-50);
+  padding: 12px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+}
+.checkout-summary .row {
+  display: flex; justify-content: space-between; gap: 12px;
+  padding: 4px 0;
+}
+.checkout-summary .row.total {
+  font-weight: 800; color: var(--blue-700); font-size: 15px;
+  border-top: 1px dashed rgba(10,78,163,.2);
+  padding-top: 8px; margin-top: 4px;
+}
+.checkout-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-weight: 700; color: var(--blue-500); font-size: 13px;
+  padding: 4px 0; margin-bottom: 4px;
+}
+.checkout-back:hover { text-decoration: underline; }
+
+/* ============ FOOTER ============ */
+.footer {
+  background: linear-gradient(180deg, var(--blue-700) 0%, #041f44 100%);
+  color: rgba(255,255,255,.85);
+  padding: 64px 0 0;
+  margin-top: 40px;
+}
+.footer .container { padding: 0 22px; }
+@media (min-width: 720px) {
+  .footer .container { padding: 0 32px; }
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 36px;
+  padding-bottom: 44px;
+}
+@media (min-width: 720px) {
+  .footer { padding-top: 72px; margin-top: 56px; }
+  .footer-grid { grid-template-columns: 1.1fr 1fr 1.3fr; gap: 48px; padding-bottom: 52px; }
+}
+
+.footer h4 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 16px; font-weight: 800; color: #fff;
+  margin-bottom: 18px;
+  letter-spacing: -.01em;
+}
+.footer p, .footer li { font-size: 13.5px; line-height: 1.65; }
+
+.footer-brand .logo-mark { width: 52px; height: 52px; }
+.footer-brand .lead {
+  margin: 16px 0 18px;
+  font-size: 13.5px;
+}
+.footer-brand .status-badge {
+  background: rgba(255,255,255,.08);
+  font-size: 12px;
+}
+
+.hours-list { list-style: none; }
+.hours-list li {
+  display: flex; justify-content: space-between; gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px dashed rgba(255,255,255,.12);
+}
+.hours-list li:last-child { border-bottom: none; }
+.hours-list .day { font-weight: 700; color: #fff; }
+
+.address-block { margin-bottom: 16px; font-size: 13.5px; }
+.address-block strong { color: #fff; display: block; margin-bottom: 6px; }
+.map-wrap {
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  height: 200px;
+}
+.map-wrap iframe {
+  width: 100%; height: 100%; border: none;
+}
+.map-actions { display: flex; gap: 10px; margin-top: 12px; }
+.map-actions .btn {
+  flex: 1; padding: 10px 12px; font-size: 13px;
+}
+.map-actions .btn-ghost {
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  border-color: rgba(255,255,255,.18);
+}
+.map-actions .btn-ghost:hover { background: rgba(255,255,255,.14); }
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding: 22px 0 26px;
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+  font-size: 12.5px;
+  color: rgba(255,255,255,.6);
+}
+@media (max-width: 640px) {
+  .footer-bottom { padding-bottom: 90px; } /* keep clear of the floating WhatsApp FAB */
+}
+.footer-bottom a { color: rgba(255,255,255,.85); text-decoration: none; font-weight: 600; }
+.footer-bottom a:hover { color: #fff; }
+
+/* ============ FLOATING WHATSAPP ============ */
+.fab-whats {
+  position: fixed; bottom: 20px; right: 20px;
+  width: 56px; height: 56px;
+  background: #25d366;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  color: #fff;
+  box-shadow: 0 8px 22px rgba(37,211,102,.45);
+  z-index: 60;
+  transition: transform .15s;
+}
+.fab-whats:hover { transform: scale(1.08); }
+
+/* ============ CLOSED-STORE ALERT POPUP ============ */
+.alert-backdrop {
+  position: fixed; inset: 0; z-index: 110;
+  background: rgba(8, 18, 38, .68);
+  backdrop-filter: blur(6px);
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease;
+}
+.alert-backdrop.open { opacity: 1; pointer-events: auto; }
+.alert-modal {
+  position: fixed; z-index: 111;
+  left: 50%; top: 50%;
+  transform: translate(-50%, calc(-50% + 12px)) scale(.96);
+  width: min(440px, calc(100% - 24px));
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 28px 70px rgba(0,0,0,.32);
+  overflow: hidden;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+}
+.alert-modal.open {
+  opacity: 1; pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.alert-hero {
+  background: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-700) 100%);
+  color: #fff;
+  padding: 28px 24px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.alert-hero::before {
+  content: '';
+  position: absolute; inset: -40% -10% auto auto;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(255,209,128,.25) 0%, transparent 65%);
+  pointer-events: none;
+}
+.alert-icon {
+  width: 64px; height: 64px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.14);
+  border: 1.5px solid rgba(255,255,255,.25);
+  display: grid; place-items: center;
+  position: relative; z-index: 1;
+}
+.alert-eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 11px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .12em;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.22);
+  padding: 5px 11px; border-radius: 999px;
+  margin-bottom: 10px;
+  position: relative; z-index: 1;
+}
+.alert-eyebrow .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--red);
+  box-shadow: 0 0 0 0 rgba(226,59,59,.5);
+  animation: pulseRed 1.8s infinite;
+}
+@keyframes pulseRed {
+  0% { box-shadow: 0 0 0 0 rgba(255,120,120,.55); }
+  70% { box-shadow: 0 0 0 7px rgba(255,120,120,0); }
+  100% { box-shadow: 0 0 0 0 rgba(255,120,120,0); }
+}
+.alert-title {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 22px; font-weight: 800;
+  letter-spacing: -.02em; line-height: 1.15;
+  position: relative; z-index: 1;
+}
+.alert-body {
+  padding: 22px 24px 8px;
+  text-align: center;
+}
+.alert-body p {
+  color: var(--muted);
+  font-size: 14px; line-height: 1.55;
+  margin-bottom: 14px;
+}
+.alert-body p strong { color: var(--text); font-weight: 700; }
+.alert-shift-card {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 16px;
+  background: linear-gradient(135deg, #fff7ec 0%, #ffece0 100%);
+  border: 1.5px solid #ffd2b0;
+  border-radius: 12px;
+  margin-bottom: 6px;
+  text-align: left;
+}
+.alert-shift-card .shift-icon {
+  width: 42px; height: 42px;
+  background: var(--orange);
+  color: #fff;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(255,106,19,.35);
+}
+.alert-shift-card .shift-meta {
+  font-size: 11.5px;
+  color: #9c4f17;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  margin-bottom: 2px;
+}
+.alert-shift-card .shift-when {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 17px; font-weight: 800;
+  color: #6b2c00;
+  line-height: 1.15;
+  letter-spacing: -.01em;
+}
+.alert-shift-card .shift-when small {
+  display: block;
+  font-size: 12px; font-weight: 600;
+  color: #9c4f17; margin-top: 1px;
+  text-transform: none; letter-spacing: 0;
+}
+.alert-actions {
+  padding: 14px 24px 22px;
+  display: flex; gap: 10px;
+}
+.alert-actions .btn { flex: 1; padding: 13px 14px; }
+.alert-actions .btn-secondary {
+  background: var(--bg); color: var(--text);
+  border: 1.5px solid var(--border);
+}
+.alert-actions .btn-secondary:hover { background: var(--border); }
+
+@media (max-width: 480px) {
+  .alert-actions { flex-direction: column-reverse; }
+  .alert-actions .btn { width: 100%; }
+}
+
+/* ============ GÁS DO POVO SEAL (HERO) ============ */
+.gas-povo-seal {
+  display: inline-flex; align-items: center; gap: 14px;
+  background: rgba(255, 255, 255, .96);
+  border: 1.5px solid rgba(255, 255, 255, .6);
+  border-radius: 14px;
+  padding: 8px 16px 8px 8px;
+  margin-top: 18px;
+  text-decoration: none;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, .25), 0 0 0 3px rgba(255, 223, 0, .25);
+  cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
+  position: relative;
+}
+.gas-povo-seal:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, .3), 0 0 0 3px rgba(255, 223, 0, .45);
+}
+.gas-povo-seal .gp-logo {
+  width: 78px; height: 50px;
+  flex-shrink: 0;
+  display: grid; place-items: center;
+}
+.gas-povo-seal .gp-logo img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+.gas-povo-seal .gp-text { line-height: 1.15; min-width: 0; text-align: left; }
+.gas-povo-seal .gp-eyebrow {
+  display: block;
+  font-size: 9.5px; font-weight: 800;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: #009c3b;
+  margin-bottom: 2px;
+}
+.gas-povo-seal .gp-title {
+  display: block;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 14px; font-weight: 800;
+  letter-spacing: -.01em;
+  color: var(--text);
+}
+.gas-povo-seal .gp-arrow {
+  margin-left: 4px;
+  color: var(--blue-500);
+  opacity: .7;
+  transition: transform .15s ease, opacity .15s ease;
+}
+.gas-povo-seal:hover .gp-arrow { transform: translateX(3px); opacity: 1; }
+
+@media (max-width: 480px) {
+  .gas-povo-seal { padding: 8px 14px 8px 8px; gap: 10px; }
+  .gas-povo-seal .gp-logo { width: 64px; height: 42px; }
+  .gas-povo-seal .gp-title { font-size: 13px; }
+}
+
+/* ============ CPF FIELD (conditional on payment) ============ */
+.field.cpf-field { display: none; }
+.field.cpf-field.show { display: flex; }
+
+/* ============ GÁS DO POVO INFO CARD (in checkout) ============ */
+.gp-info-card {
+  background: linear-gradient(135deg, #e8f7ee 0%, #d4f0de 100%);
+  border: 1.5px solid #8ad1a0;
+  border-radius: 12px;
+  padding: 13px 14px;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+}
+.gp-info-card.show { display: flex; }
+.gp-info-card .gp-info-head {
+  display: flex; align-items: center; gap: 9px;
+  font-weight: 800; font-size: 13px;
+  color: #066e2c;
+}
+.gp-info-card .gp-info-head .gp-mini {
+  width: 50px; height: 32px;
+  border-radius: 6px;
+  background: #fff;
+  border: 1px solid #c5e6cf;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  padding: 3px 5px;
+}
+.gp-info-card .gp-info-head .gp-mini img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+.gp-info-card p {
+  font-size: 12px; line-height: 1.5;
+  color: #0a5a26;
+  margin: 0;
+}
+.gp-info-card a {
+  color: #066e2c; font-weight: 800;
+  text-decoration: underline;
+}
+
+/* ============ GENERIC INFO POPUP (Gás do Povo + others) ============ */
+.info-modal {
+  position: fixed; z-index: 111;
+  left: 50%; top: 50%;
+  transform: translate(-50%, calc(-50% + 12px)) scale(.96);
+  width: min(440px, calc(100% - 24px));
+  max-height: calc(100vh - 32px);
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 28px 70px rgba(0,0,0,.32);
+  overflow: hidden;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+  display: flex; flex-direction: column;
+}
+.info-modal.open {
+  opacity: 1; pointer-events: auto;
+  transform: translate(-50%, -50%) scale(1);
+}
+.info-modal-hero {
+  background: linear-gradient(135deg, #009c3b 0%, #006b22 100%);
+  color: #fff;
+  padding: 26px 24px 22px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.info-modal-hero::before {
+  content: '';
+  position: absolute; inset: -50% -10% auto auto;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(255,223,0,.32) 0%, transparent 65%);
+  pointer-events: none;
+}
+.info-modal-hero .info-eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 10.5px; font-weight: 800;
+  text-transform: uppercase; letter-spacing: .12em;
+  background: rgba(255,223,0,.18);
+  border: 1px solid rgba(255,223,0,.35);
+  color: #ffdf00;
+  padding: 5px 11px; border-radius: 999px;
+  margin-bottom: 12px;
+  position: relative; z-index: 1;
+}
+.info-modal-hero .info-icon {
+  width: 130px; height: 80px;
+  margin: 0 auto 14px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, .96);
+  display: grid; place-items: center;
+  position: relative; z-index: 1;
+  padding: 8px 14px;
+  box-shadow: 0 6px 18px rgba(0,0,0,.22);
+}
+.info-modal-hero .info-icon img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+}
+.info-modal-hero h3 {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 20px; font-weight: 800;
+  letter-spacing: -.015em; line-height: 1.2;
+  position: relative; z-index: 1;
+}
+.info-modal-body {
+  padding: 22px 24px 6px;
+  overflow-y: auto;
+}
+.info-modal-body p {
+  color: var(--muted);
+  font-size: 13.5px; line-height: 1.55;
+  margin-bottom: 12px;
+}
+.info-modal-body p strong { color: var(--text); font-weight: 700; }
+.info-checklist {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 8px;
+  margin-bottom: 12px;
+}
+.info-checklist li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13px; line-height: 1.45;
+  color: var(--text);
+}
+.info-checklist li::before {
+  content: '✓';
+  background: #009c3b;
+  color: #fff;
+  width: 18px; height: 18px;
+  min-width: 18px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 11px; font-weight: 900;
+  margin-top: 2px;
+}
+.info-modal-actions {
+  padding: 12px 24px 22px;
+  display: flex; gap: 10px;
+}
+.info-modal-actions .btn { flex: 1; padding: 13px 14px; }
+.info-modal-actions .btn-gov {
+  background: #009c3b; color: #fff;
+  box-shadow: 0 6px 16px rgba(0, 156, 59, .35);
+  transition: background .15s, transform .15s;
+}
+.info-modal-actions .btn-gov:hover { background: #007d2e; transform: translateY(-1px); }
+.info-modal-close {
+  position: absolute; top: 12px; right: 12px;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(255,255,255,.95);
+  color: var(--text);
+  display: grid; place-items: center;
+  z-index: 2;
+  box-shadow: var(--shadow-sm);
+  transition: background .15s;
+}
+.info-modal-close:hover { background: var(--bg); }
+
+@media (max-width: 480px) {
+  .info-modal-actions { flex-direction: column-reverse; }
+}
+
+/* ============ TOAST ============ */
+  position: fixed; bottom: 90px; left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: var(--blue-700); color: #fff;
+  padding: 12px 18px; border-radius: 999px;
+  font-weight: 700; font-size: 13.5px;
+  box-shadow: var(--shadow-lg);
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease, transform .25s ease;
+  z-index: 100;
+  display: inline-flex; align-items: center; gap: 8px;
+  max-width: calc(100% - 32px);
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.toast .check {
+  width: 20px; height: 20px; border-radius: 50%;
+  background: var(--green); display: grid; place-items: center;
+  flex-shrink: 0;
+}
+
+/* ============ RESPONSIVE TWEAKS ============ */
+@media (max-width: 640px) {
+  .header-grid {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+  }
+  .logo-text .sub { display: none; }
+  .search {
+    grid-column: 1 / -1;
+    order: 3;
+    height: 42px;
+  }
+  .header-actions { justify-self: end; }
+  .status-badge { padding: 6px 10px; font-size: 12px; }
+  .status-badge .label-full { display: none; }
+  .modal { width: 100%; max-height: 100vh; height: 100vh; border-radius: 0; }
+  .hero-content { padding: 40px 16px 48px; }
+  .footer { padding-top: 52px; margin-top: 32px; }
+  .footer-grid { gap: 32px; padding-bottom: 36px; }
+  .footer-bottom { padding: 20px 0 22px; }
+}
+
+/* ============ NO RESULTS ============ */
+.no-results {
+  text-align: center; padding: 50px 20px;
+  color: var(--muted);
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  border: 1px dashed var(--border-2);
+}
+.no-results h3 { color: var(--text); margin: 8px 0 6px; font-weight: 800; font-family: 'Bricolage Grotesque', sans-serif; }
+
+/* ============ TRUST STRIP ============ */
+.trust-strip {
+  background: #fff;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+.trust-strip-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 18px;
+}
+@media (min-width: 720px) { .trust-strip-grid { grid-template-columns: repeat(4, 1fr); } }
+.trust-item {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 12.5px;
+  color: var(--text);
+}
+.trust-item .ti-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: var(--blue-50);
+  color: var(--blue-500);
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.trust-item strong { font-weight: 800; display: block; line-height: 1.15; }
+.trust-item span { color: var(--muted); font-size: 11.5px; }
+
+/* ============ COVERAGE CHECK ============ */
+.coverage-bar {
+  background: linear-gradient(135deg, #fff7ec 0%, #ffe9d4 100%);
+  border: 1px solid #ffd2b0;
+  border-radius: var(--radius-lg);
+  padding: 14px 16px;
+  margin-bottom: 22px;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 12px;
+}
+.coverage-bar .cb-icon {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 10px rgba(255,106,19,.32);
+}
+.coverage-bar .cb-text { flex: 1; min-width: 200px; }
+.coverage-bar .cb-text strong { display: block; font-weight: 800; color: #6b2c00; line-height: 1.2; }
+.coverage-bar .cb-text span { font-size: 12.5px; color: #9c4f17; }
+.coverage-form { display: flex; gap: 8px; flex: 1; min-width: 220px; }
+.coverage-form input {
+  flex: 1;
+  border: 1.5px solid #ffd2b0;
+  background: #fff;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+.coverage-form input:focus { outline: none; border-color: var(--orange); }
+.coverage-form button {
+  background: var(--orange); color: #fff;
+  font-weight: 800; padding: 0 18px;
+  border-radius: 10px; font-size: 13.5px;
+  white-space: nowrap;
+  transition: background .15s;
+}
+.coverage-form button:hover { background: var(--orange-dark); }
+.coverage-result {
+  width: 100%; font-size: 13px; font-weight: 700;
+  padding: 8px 12px; border-radius: 8px;
+  display: none;
+}
+.coverage-result.show { display: block; }
+.coverage-result.ok { background: rgba(28,169,76,.12); color: #0e6b2d; border: 1px solid rgba(28,169,76,.3); }
+.coverage-result.no { background: rgba(226,59,59,.1); color: #9b2222; border: 1px solid rgba(226,59,59,.3); }
+
+/* ============ SKELETON ============ */
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.card-img.is-loading::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,.55) 50%, transparent 100%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+  z-index: 2;
+}
+
+/* ============ INLINE QTY ON CARD ============ */
+.card-qty-row {
+  margin-top: 8px;
+  display: flex; align-items: center; gap: 8px;
+}
+.card-qty {
+  display: inline-flex; align-items: center;
+  background: var(--bg);
+  border-radius: 9px;
+  border: 1px solid var(--border);
+}
+.card-qty button {
+  width: 30px; height: 30px;
+  font-size: 15px; font-weight: 800;
+  color: var(--blue-700);
+  transition: background .15s;
+}
+.card-qty button:hover { background: var(--blue-50); }
+.card-qty button:disabled { color: var(--muted-2); cursor: not-allowed; }
+.card-qty .q { min-width: 22px; text-align: center; font-weight: 800; font-size: 13px; }
+
+/* ============ OFERTA / COMBO BADGE ============ */
+.card-tag.tag-oferta {
+  background: linear-gradient(135deg, #ff9528 0%, #ff5d0e 100%);
+  color: #fff;
+  font-size: 10px;
+  box-shadow: 0 4px 10px rgba(255,93,14,.35);
+}
+.card-price-original {
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: line-through;
+  font-weight: 600;
+  display: block;
+  line-height: 1;
+  margin-bottom: 2px;
+}
+.card-discount {
+  display: inline-block;
+  background: #ffe9d4;
+  color: #c64200;
+  font-size: 10.5px; font-weight: 800;
+  padding: 2px 7px; border-radius: 4px;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ============ FLY-TO-CART ANIMATION ============ */
+.fly-clone {
+  position: fixed;
+  z-index: 95;
+  pointer-events: none;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 8px 24px rgba(10,78,163,.3);
+  padding: 6px;
+  transition: transform .7s cubic-bezier(.5,-0.2,.6,1.4), opacity .7s ease, width .7s ease, height .7s ease;
+}
+.fly-clone img { width: 100%; height: 100%; object-fit: contain; }
+.cart-btn.bump { animation: cartBump .5s ease; }
+@keyframes cartBump {
+  0%, 100% { transform: scale(1); }
+  35% { transform: scale(1.18); }
+  60% { transform: scale(.95); }
+}
+
+/* ============ RELATED PRODUCTS IN MODAL ============ */
+.related-block {
+  margin-top: 14px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--border);
+}
+.related-block .label {
+  font-size: 13px; font-weight: 700; color: var(--text);
+  margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.related-block .label svg { color: var(--orange); }
+.related-list { display: flex; flex-direction: column; gap: 8px; }
+.related-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px;
+  border: 1.5px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color .15s, background .15s;
+}
+.related-item:hover { border-color: var(--blue-500); background: var(--blue-50); }
+.related-item .ri-img {
+  width: 44px; height: 44px;
+  background: var(--bg);
+  border-radius: 8px;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  padding: 4px;
+}
+.related-item .ri-img img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.related-item .ri-info { flex: 1; min-width: 0; }
+.related-item .ri-name {
+  font-weight: 700; font-size: 13px;
+  line-height: 1.25;
+  display: -webkit-box; -webkit-line-clamp: 1; line-clamp: 1; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.related-item .ri-price { font-size: 12.5px; color: var(--blue-700); font-weight: 800; }
+.related-item .ri-add {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--orange);
+  color: #fff;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  transition: transform .15s;
+}
+.related-item .ri-add:hover { transform: scale(1.1); }
+
+/* ============ TESTIMONIALS ============ */
+.testimonials {
+  background: var(--surface);
+  padding: 40px 0 8px;
+  margin-top: 16px;
+}
+.testimonials-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 720px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1000px) { .testimonials-grid { grid-template-columns: repeat(4, 1fr); } }
+
+.testimonial {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 18px;
+  background: #fff;
+  display: flex; flex-direction: column; gap: 12px;
+  position: relative;
+  transition: border-color .15s, transform .2s;
+}
+.testimonial:hover { border-color: var(--blue-100); transform: translateY(-2px); }
+.testimonial .stars {
+  color: #f5b400;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+.testimonial .quote {
+  font-size: 13.5px;
+  line-height: 1.55;
+  color: var(--text);
+  flex: 1;
+}
+.testimonial .author {
+  display: flex; align-items: center; gap: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+}
+.testimonial .avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--blue-50);
+  flex-shrink: 0;
+  display: grid; place-items: center;
+  font-weight: 800;
+  color: var(--blue-700);
+  font-size: 13px;
+}
+.testimonial .author-info { line-height: 1.2; min-width: 0; }
+.testimonial .author-name { font-weight: 800; font-size: 13px; }
+.testimonial .author-loc { font-size: 11.5px; color: var(--muted); }
+
+/* ============ FAQ ============ */
+.faq { margin-top: 6px; }
+.faq-list { display: flex; flex-direction: column; gap: 8px; }
+.faq-item {
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: background .15s;
+}
+.faq-item.open { background: rgba(255,255,255,.08); }
+.faq-q {
+  width: 100%; text-align: left;
+  padding: 14px 16px;
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  color: #fff;
+  font-weight: 700; font-size: 13.5px;
+  line-height: 1.35;
+}
+.faq-q .chev {
+  flex-shrink: 0;
+  transition: transform .25s ease;
+  opacity: .8;
+}
+.faq-item.open .faq-q .chev { transform: rotate(180deg); }
+.faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .3s ease;
+  color: rgba(255,255,255,.78);
+  font-size: 13px; line-height: 1.6;
+}
+.faq-item.open .faq-a { max-height: 500px; }
+.faq-a > div { padding: 0 16px 14px; }
+
+/* ============ TROCO FIELD ============ */
+.field.troco-field { display: none; }
+.field.troco-field.show { display: flex; }
+
+/* ============ PIX CARD ============ */
+.pix-card {
+  background: linear-gradient(135deg, #f0fbf4 0%, #ddf3e3 100%);
+  border: 1.5px solid #b7e2c2;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+}
+.pix-card.show { display: flex; }
+.pix-card .pix-head {
+  display: flex; align-items: center; gap: 10px;
+}
+.pix-card .pix-icon {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: #32c466;
+  color: #fff;
+  display: grid; place-items: center;
+  flex-shrink: 0;
+  font-weight: 800;
+}
+.pix-card .pix-title { font-size: 13px; font-weight: 800; color: #1a6b32; line-height: 1.15; }
+.pix-card .pix-sub { font-size: 11.5px; color: #2c8245; }
+.pix-key-row {
+  display: flex; align-items: stretch; gap: 0;
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #c5e6cf;
+  overflow: hidden;
+}
+.pix-key {
+  flex: 1;
+  padding: 10px 12px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 14px; font-weight: 700;
+  color: var(--text);
+  letter-spacing: -.005em;
+  word-break: break-all;
+  display: flex; align-items: center;
+}
+.pix-copy {
+  background: #1a6b32; color: #fff;
+  font-weight: 800; font-size: 12px;
+  padding: 0 14px;
+  display: flex; align-items: center; gap: 6px;
+  transition: background .15s;
+}
+.pix-copy:hover { background: #145025; }
+.pix-copy.copied { background: #32c466; }
+
+/* ============ EMPTY CART WITH MASCOTE ============ */
+.drawer-empty .mascote-mini {
+  width: 88px; height: 88px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue-50) 0%, #d4e4f6 100%);
+  display: grid; place-items: center;
+  overflow: hidden;
+}
+.drawer-empty .mascote-mini img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transform: scale(1.15);
+}
+
+/* ============ REORDER BANNER ============ */
+.reorder-banner {
+  background: linear-gradient(135deg, var(--blue-50) 0%, #e3edf9 100%);
+  border: 1.5px solid var(--blue-100);
+  border-radius: 12px;
+  padding: 14px;
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 14px;
+}
+.reorder-banner .rb-mascote {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--blue-500);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.reorder-banner .rb-mascote img { width: 100%; height: 100%; object-fit: cover; object-position: center 25%; transform: scale(1.15); }
+.reorder-banner .rb-text { flex: 1; min-width: 0; }
+.reorder-banner .rb-greet { font-size: 12px; color: var(--muted); font-weight: 600; }
+.reorder-banner .rb-name { font-weight: 800; font-size: 14px; color: var(--blue-700); line-height: 1.2; }
+.reorder-banner .rb-action {
+  font-size: 12px; font-weight: 700; color: var(--orange);
+  padding: 0; background: none;
+  text-align: left; margin-top: 2px;
+}
+.reorder-banner .rb-action:hover { text-decoration: underline; }
+.reorder-banner .rb-dismiss {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.7);
+  color: var(--muted);
+  display: grid; place-items: center;
+  flex-shrink: 0;
+}
+.reorder-banner .rb-dismiss:hover { background: #fff; color: var(--text); }
+</style>
+</head>
+
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="header">
+  <div class="container">
+    <div class="header-top header-grid">
+      <a href="#top" class="logo" id="top">
+        <span class="logo-mark"><img src="assets/mascote.png" alt="Mascote Nino" /></span>
+        <span class="logo-text">
+          <span class="brand">Nino Gás</span>
+          <span class="sub">&amp; Água Mineral · ZN POA</span>
+        </span>
+      </a>
+
+      <div class="search" role="search">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>
+        </svg>
+        <input type="search" id="searchInput" placeholder="Buscar gás, água, acessórios..." aria-label="Buscar produto" />
+      </div>
+
+      <div class="header-actions">
+        <span class="status-badge" id="statusBadgeHeader" aria-live="polite">
+          <span class="status-dot"></span>
+          <span class="label"><span class="label-full">Loja </span>Fechada</span>
+        </span>
+        <button class="cart-btn" id="cartOpenBtn" aria-label="Abrir carrinho">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/>
+            <path d="M2.5 3h2.5l2.4 12.3a2 2 0 0 0 2 1.7h8.3a2 2 0 0 0 2-1.6L21.5 7H6"/>
+          </svg>
+          <span class="cart-count hidden" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-media" aria-hidden="true"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow"><span class="dot"></span> Zona Norte · Porto Alegre</span>
+    <h1>Entrega Rápida de Gás e Água na <span class="accent">Zona Norte!</span></h1>
+    <p>Botijões, galões, acessórios e muito mais com o melhor preço da região. Peça agora e receba sem sair de casa.</p>
+    <div class="hero-cta">
+      <a href="#produtos" class="btn btn-primary">
+        Ver produtos
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a href="https://wa.me/555133408080" class="btn btn-whats" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91a9.84 9.84 0 0 0-2.91-7.01zM12.05 20.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23z"/></svg>
+        Falar no WhatsApp
+      </a>
+    </div>
+    <div class="hero-perks">
+      <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Entrega no mesmo dia</span>
+      <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7 9 18l-5-5"/></svg> Pix · Cartão · Dinheiro</span>
+      <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-12a8 8 0 1 1 16 0c0 7.5-8 12-8 12z"/><circle cx="12" cy="10" r="3"/></svg> Vila Jardim · Zona Norte</span>
+    </div>
+
+    <button type="button" class="gas-povo-seal" id="gasPovoSealBtn" aria-label="Mais informações sobre o programa Gás do Povo">
+      <span class="gp-logo">
+        <img src="assets/gas-do-povo.png" alt="Logo Gás do Povo" />
+      </span>
+      <span class="gp-text">
+        <span class="gp-eyebrow">✓ Pagamento aceito aqui</span>
+        <span class="gp-title">Programa Gás do Povo</span>
+      </span>
+      <svg class="gp-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- ============ TRUST STRIP ============ -->
+<section class="trust-strip">
+  <div class="container">
+    <div class="trust-strip-grid">
+      <div class="trust-item">
+        <span class="ti-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </span>
+        <div><strong>Entrega em 15–45 min</strong><span>Na Zona Norte</span></div>
+      </div>
+      <div class="trust-item">
+        <span class="ti-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </span>
+        <div><strong>+25 anos de Zona Norte</strong><span>Tradição na região</span></div>
+      </div>
+      <div class="trust-item">
+        <span class="ti-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z"/><path d="m9 12 2 2 4-4"/></svg>
+        </span>
+        <div><strong>Gás original e seguro</strong><span>Marcas certificadas</span></div>
+      </div>
+      <div class="trust-item">
+        <span class="ti-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 11h20"/><path d="M6 16h2"/></svg>
+        </span>
+        <div><strong>Pix · Cartão · Dinheiro</strong><span>Pague na entrega</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS ============ -->
+<main class="section" id="produtos">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>Nossos produtos</h2>
+        <p>Escolha sua categoria e clique no produto para ver detalhes.</p>
+      </div>
+    </div>
+
+    <!-- Coverage check -->
+    <div class="coverage-bar">
+      <span class="cb-icon">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-12a8 8 0 1 1 16 0c0 7.5-8 12-8 12z"/><circle cx="12" cy="10" r="3"/></svg>
+      </span>
+      <div class="cb-text">
+        <strong>Entregamos no seu bairro?</strong>
+        <span>Digite seu CEP ou nome do bairro para verificar</span>
+      </div>
+      <form class="coverage-form" id="coverageForm" autocomplete="off">
+        <input type="text" id="coverageInput" placeholder="Ex: Vila Jardim ou 91320-001" aria-label="CEP ou bairro" />
+        <button type="submit">Verificar</button>
+      </form>
+      <div class="coverage-result" id="coverageResult" role="status" aria-live="polite"></div>
+    </div>
+
+    <!-- Reorder banner (returning customer) -->
+    <div id="reorderBannerContainer"></div>
+
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</main>
+
+<!-- ============ TESTIMONIALS ============ -->
+<section class="testimonials">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>Quem é da Zona Norte confia 💙</h2>
+        <p>O que nossos clientes dizem sobre o atendimento.</p>
+      </div>
+    </div>
+    <div class="testimonials-grid" id="testimonialsGrid"></div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+
+      <div class="footer-brand">
+        <a href="#top" class="logo" style="color:#fff;">
+          <span class="logo-mark"><img src="assets/mascote.png" alt="Mascote Nino" /></span>
+          <span class="logo-text">
+            <span class="brand">Nino Gás</span>
+            <span class="sub">&amp; Água Mineral</span>
+          </span>
+        </a>
+        <p class="lead">Entrega rápida de gás e água mineral na Zona Norte de Porto Alegre. Atendendo a Vila Jardim e bairros próximos com agilidade desde sempre.</p>
+        <span class="status-badge" id="statusBadgeFooter" aria-live="polite">
+          <span class="status-dot"></span>
+          <span class="label">Loja Fechada</span>
+        </span>
+      </div>
+
+      <div>
+        <h4>Horário de funcionamento</h4>
+        <ul class="hours-list">
+          <li><span class="day">Segunda a Sábado</span><span>09:00 – 21:30</span></li>
+          <li><span class="day">Domingos e Feriados</span><span>09:00 – 14:00</span></li>
+        </ul>
+        <p style="margin-top:14px; font-size:13px;">
+          📞 <strong style="color:#fff;">3340-8080</strong><br>
+          <span style="opacity:.75;">Pedidos via WhatsApp ou telefone.</span>
+        </p>
+      </div>
+
+      <div>
+        <h4>Onde nos encontrar</h4>
+        <div class="address-block">
+          <strong>Nino Gás &amp; Água Mineral</strong>
+          Av. Saturnino de Brito, 1173<br>
+          Vila Jardim, Porto Alegre - RS<br>
+          CEP 91320-001
+        </div>
+        <div class="map-wrap">
+          <iframe
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Av.+Saturnino+de+Brito,+1173+-+Vila+Jardim,+Porto+Alegre+-+RS,+91320-001&output=embed"
+            title="Mapa de localização da Nino Gás"></iframe>
+        </div>
+        <div class="map-actions">
+          <a href="https://www.google.com/maps/search/?api=1&query=Av.+Saturnino+de+Brito,+1173+-+Vila+Jardim,+Porto+Alegre+-+RS,+91320-001" target="_blank" rel="noopener" class="btn btn-ghost">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-12a8 8 0 1 1 16 0c0 7.5-8 12-8 12z"/><circle cx="12" cy="10" r="3"/></svg>
+            Ver no Mapa
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq">
+      <h4>Perguntas frequentes</h4>
+      <div class="faq-list" id="faqList"></div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Nino Gás &amp; Água Mineral. Todos os direitos reservados.</span>
+      <span>Site desenvolvido para a Zona Norte 💙</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FAB WHATSAPP ============ -->
+<a href="https://wa.me/555133408080" target="_blank" rel="noopener" class="fab-whats" aria-label="Falar no WhatsApp">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91a9.84 9.84 0 0 0-2.91-7.01zM12.05 20.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23zm4.52-6.16c-.25-.12-1.46-.72-1.69-.8-.23-.08-.39-.12-.56.12-.17.25-.64.8-.79.97-.14.17-.29.19-.54.06-.25-.12-1.04-.38-1.99-1.22-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.39.11-.51.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07s.89 2.4 1.01 2.56c.12.17 1.74 2.66 4.21 3.73.59.25 1.05.41 1.41.52.59.19 1.13.16 1.55.1.47-.07 1.46-.6 1.66-1.18.21-.58.21-1.07.14-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
+</a>
+
+<!-- ============ MODAL: PRODUCT ============ -->
+<div class="modal-backdrop" id="modalBackdrop"></div>
+<div class="modal" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <button class="modal-close" id="modalCloseBtn" aria-label="Fechar">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <div class="modal-grid" id="modalGrid"></div>
+</div>
+
+<!-- ============ DRAWER: CART ============ -->
+<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-labelledby="drawerTitle">
+  <div class="drawer-head">
+    <h3 id="drawerTitle">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/><path d="M2.5 3h2.5l2.4 12.3a2 2 0 0 0 2 1.7h8.3a2 2 0 0 0 2-1.6L21.5 7H6"/></svg>
+      <span id="drawerTitleText">Seu carrinho</span>
+    </h3>
+    <button class="drawer-close" id="drawerCloseBtn" aria-label="Fechar carrinho">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+  <div id="drawerContent" style="display:flex; flex-direction:column; flex:1; overflow:hidden;">
+    <!-- Filled by JS: either cart list or checkout form -->
+  </div>
+</div>
+
+<!-- ============ INFO POPUP (Gás do Povo) ============ -->
+<div class="info-modal" id="gasPovoModal" role="dialog" aria-modal="true" aria-labelledby="gpModalTitle">
+  <button class="info-modal-close" id="gpModalCloseBtn" aria-label="Fechar">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <div class="info-modal-hero">
+    <span class="info-eyebrow">⚠️ Atenção · Importante</span>
+    <div class="info-icon">
+      <img src="assets/gas-do-povo.png" alt="Logo Gás do Povo" />
+    </div>
+    <h3 id="gpModalTitle">CadÚnico precisa estar atualizado</h3>
+  </div>
+  <div class="info-modal-body">
+    <p>Você selecionou o pagamento pelo <strong>programa Gás do Povo</strong>. Para concluirmos a entrega com esse benefício, é obrigatório que:</p>
+    <ul class="info-checklist">
+      <li>Você esteja inscrito no <strong>CadÚnico</strong> (Cadastro Único do Governo Federal)</li>
+      <li>Os dados estejam <strong>atualizados nos últimos 24 meses</strong></li>
+      <li>Você seja <strong>beneficiário ativo</strong> do Auxílio Gás (consulte em gasdopovo.mds.gov.br)</li>
+      <li>Informe seu <strong>CPF</strong> no campo do checkout para validarmos</li>
+    </ul>
+    <p style="font-size:12px; color:var(--muted-2); border-left:3px solid var(--border-2); padding-left:10px; margin-top:14px;">
+      Se o cadastro estiver desatualizado ou você não for beneficiário ativo, o pagamento não poderá ser concluído por essa forma. Procure o CRAS mais próximo para atualizar seus dados.
+    </p>
+  </div>
+  <div class="info-modal-actions">
+    <a href="https://gasdopovo.mds.gov.br/" target="_blank" rel="noopener" class="btn btn-secondary">
+      Consultar benefício
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+    </a>
+    <button type="button" class="btn btn-gov" id="gpModalOkBtn">
+      Entendi, vou continuar
+    </button>
+  </div>
+</div>
+
+<!-- ============ TOAST ============ -->
+<div class="toast" id="toast" role="status" aria-live="polite">
+  <span class="check">
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+  </span>
+  <span id="toastText">Adicionado ao carrinho</span>
+</div>
+
+<!-- ============ CLOSED-STORE ALERT POPUP ============ -->
+<div class="alert-backdrop" id="alertBackdrop"></div>
+<div class="alert-modal" id="closedAlert" role="dialog" aria-modal="true" aria-labelledby="alertTitle">
+  <div class="alert-hero">
+    <span class="alert-eyebrow"><span class="dot"></span> Loja Fechada</span>
+    <div class="alert-icon">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </div>
+    <h3 class="alert-title" id="alertTitle">Estamos fechados no momento</h3>
+  </div>
+
+  <div class="alert-body">
+    <p>Sem problema! Você pode <strong>fazer seu pedido normalmente</strong> — ele será visualizado e processado quando o próximo turno começar:</p>
+    <div class="alert-shift-card">
+      <div class="shift-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div>
+        <div class="shift-meta">Próximo atendimento</div>
+        <div class="shift-when" id="alertShiftWhen">— <small>—</small></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert-actions" id="alertActions">
+    <!-- buttons set dynamically -->
+  </div>
+</div>
+
+<script>
+/* ============================================================
+   NINO GÁS — E-COMMERCE FRONT-END
+   ============================================================ */
+
+/* ----------- DATA ----------- */
+const PRODUCTS = [
+  {
+    id: "combo-casa-nova",
+    category: "Combos",
+    name: "Combo Casa Nova",
+    description: "Tudo que você precisa para começar bem em casa nova: 1 Botijão de Gás P13 (Supergasbras) + 1 Galão de Água Mineral 20L. Receba tudo junto com economia de R$ 6.",
+    short_description: "P13 Supergasbras + Galão 20L com R$ 6 de desconto.",
+    price: 130.00,
+    original_price: 136.00,
+    image: "https://lh3.googleusercontent.com/glsgmb/AMnFcuohKHu3M3QEY-ZueF3zI-qbPEgTvUV7L2Rr5nRRlKj0RSHJ_7k2R7kMj7qgJwVMxTO47xy8H72403YV0l5nxVlPCA=s608-k-rw-no-sc0x00ffffff",
+    has_variations: false,
+    is_combo: true,
+    combo_items: [
+      "1× Botijão de Gás 13kg (Supergasbras)",
+      "1× Galão de Água Mineral 20L"
+    ]
+  },
+  {
+    id: "gas-13kg",
+    category: "Gás",
+    name: "Gás de Cozinha 13kg",
+    description: "Ideal para uso doméstico. Compatível com fogões e fornos, garante chama estável e economia. Selecione a marca de sua preferência abaixo.",
+    short_description: "Gás P13 para uso doméstico. Escolha sua marca preferida.",
+    price: 118.00,
+    image: "https://lh3.googleusercontent.com/glsgmb/AMnFcuohKHu3M3QEY-ZueF3zI-qbPEgTvUV7L2Rr5nRRlKj0RSHJ_7k2R7kMj7qgJwVMxTO47xy8H72403YV0l5nxVlPCA=s608-k-rw-no-sc0x00ffffff",
+    has_variations: true,
+    variations: [
+      { name: "Supergasbras (Ganhe Brinde)", price: 118.00 },
+      { name: "Nacional Gás", price: 118.00 },
+      { name: "Liquigás", price: 128.00 }
+    ]
+  },
+  {
+    id: "agua-20l",
+    category: "Água Mineral",
+    name: "Água Mineral 20L",
+    description: "O galão de água mineral 20L é a melhor escolha para quem busca praticidade, economia e qualidade. Ideal para residências, empresas, comércios e estabelecimentos.",
+    short_description: "Galão 20L. Praticidade e economia para sua casa ou empresa.",
+    price: 18.00,
+    image: "https://lh3.googleusercontent.com/glsgmb/AMnFcur3gmxSXpFWDbE1UBmFZQ72jtxC3AiTMJrGBVozlbsGIZ_4_BPXK22GieTLd0doOmzRYdL8yUg9l07HXXuR9wAMag=s608-k-rw-no-sc0x00ffffff",
+    has_variations: false
+  },
+  {
+    id: "gas-45kg",
+    category: "Gás",
+    name: "Cilindro de Gás 45kg",
+    description: "Ideal para uso comercial (restaurantes, padarias) e residencial de alto consumo. Grande autonomia.",
+    short_description: "Cilindro P45 para alto consumo comercial ou residencial.",
+    price: 410.00,
+    image: "https://lh3.googleusercontent.com/glsgmb/AMnFcurfspI2HhWYnyJDyC_TIWnone3jAYJwnO0I9kbNybZhQyF3OTjYhXXNYPTy0Rh3kjrWABnt_E14PPgmQV7rbukySg=s608-k-rw-no-sc0x00ffffff",
+    has_variations: false
+  },
+  {
+    id: "gas-20kg",
+    category: "Gás",
+    name: "Gás para Empilhadeira 20kg",
+    description: "Desenvolvido para empilhadeiras. Sistema de abastecimento líquido para maior desempenho.",
+    short_description: "Cilindro P20 específico para empilhadeiras.",
+    price: 175.00,
+    image: "https://lh3.googleusercontent.com/glsgmb/AMnFcuq1Q8yfijBtZZdIXw9P9Z_gY3U49FBaGrTk_i4Q82F3msVfraOJxzuhbawhD5jD427MjSe4R26Q5V7K4a7cqVEngg=s608-k-rw-no-sc0x00ffffff",
+    has_variations: false
+  },
+  {
+    id: "gas-5kg",
+    category: "Gás",
+    name: "Gás de Cozinha 5kg",
+    description: "Praticidade e mobilidade. Ideal para pequenos ambientes, churrasqueiras e camping.",
+    short_description: "Botijão P5 leve e prático para pequenos espaços.",
+    price: 75.00,
+    image: "https://lh3.googleusercontent.com/glsgmb/AMnFcuq0Q_14wrBKyLwVuhxHdBvK-urJNFedOAd4cJgAhJfMIAUFFjRquwjpMbMh_BWgCLI_6MM2Zdp3VsI9QSulqxLBkg=s608-k-rw-no-sc0x00ffffff",
+    has_variations: false
+  },
+  {
+    id: "kit-valvula",
+    category: "Acessórios",
+    name: "Kit Válvula de 1kg/h",
+    description: "Solução ideal para garantir um abastecimento seguro e eficiente do gás GLP. Acompanha Válvula + Mangueira + Braçadeiras. Compatível com botijões de 13kg.",
+    short_description: "Kit completo: Válvula + Mangueira + Braçadeiras.",
+    price: 69.90,
+    image: "https://lh3.googleusercontent.com/glsgmb/AMnFcuqPPc2uwCBNgt-aGqzLlrn8K6hQiPjsYNAqcJBg3FZK6I9fNo454RX1wLjVk_1pT3_nPRVj9hGC4lo4xAFBQWr5uA=s608-k-rw-no-sc0x00ffffff",
+    has_variations: false
+  },
+  {
+    id: "valvula",
+    category: "Acessórios",
+    name: "Válvula de 1kg/h",
+    description: "Essencial para garantir um abastecimento seguro e controlado do gás GLP. Compatível com botijões de 13kg, regula a saída do gás prevenindo vazamentos.",
+    short_description: "Regulador de gás seguro e compatível com botijões 13kg.",
+    price: 40.00,
+    image: "https://lh3.googleusercontent.com/glsgmb/AMnFcur9gxOgXENmdD6KiWDRSQpqB2zfzci1G9sbpPhpOTiamSTQ9qV05JlEy8-B2EuRqGoisEZGn6Y9rFzK65FzaYpZnQ=s608-k-rw-no-sc0x00ffffff",
+    has_variations: false
+  },
+  {
+    id: "bomba-eletrica",
+    category: "Acessórios",
+    name: "Bomba Elétrica para Galão",
+    description: "Facilite o uso do seu galão de 10L ou 20L. Design moderno, compacto e botão touch para bombear água rápido e sem esforço.",
+    short_description: "Bomba elétrica com botão touch para galões de 10L e 20L.",
+    price: 30.00,
+    image: "https://lh3.googleusercontent.com/glsgmb/AMnFcuoZWmCo0HilQaqGNf72y5ybhQb3BaKw69hWdCTd1U4Vj6EoT_Oxos27stvp3PGcHcEW7kR2iJAZVFvBAwcyz60wCQ=s608-k-rw-no-sc0x00ffffff",
+    has_variations: false
+  },
+  {
+    id: "bomba-torneira",
+    category: "Acessórios",
+    name: "Bomba Elétrica Tipo Torneira",
+    description: "Praticidade e design sofisticado. Botão touch inteligente que permite bombear a água com precisão, evitando desperdícios.",
+    short_description: "Design sofisticado tipo torneira com acionamento touch.",
+    price: 30.00,
+    image: "https://lh3.googleusercontent.com/glsgmb/AMnFcuqJnUvd0Hjp5zeKacl_EwBrKffsb7t0GVUwUokC0lOutRkE7YN4IF_umsixicvj7KEl5dJgkBF6jByF7uFLApDqPg=s608-k-rw-no-sc0x00ffffff",
+    has_variations: false
+  },
+  {
+    id: "bomba-manual",
+    category: "Acessórios",
+    name: "Bomba Manual para Galão",
+    description: "Solução perfeita para retirar água com facilidade sem desperdício. Sistema simples, não precisa de eletricidade.",
+    short_description: "Bomba manual prática, não utiliza eletricidade.",
+    price: 35.00,
+    image: "https://lh3.googleusercontent.com/glsgmb/AMnFcur9dLeHHCPSZPWx2r7dTCbZfIAa0rKkEu0BGp5MRLDl0oIfjYEPdnzh_XidtsLuJRLaXUgSj2ywDgx9IW0FfQN2XQ=s608-k-rw-no-sc0x00ffffff",
+    has_variations: false
+  },
+  {
+    id: "suporte-galao",
+    category: "Acessórios",
+    name: "Suporte para Galão",
+    description: "Design resistente e funcional, permite virar a bombona com segurança, garantindo encaixe perfeito.",
+    short_description: "Suporte resistente para virar a bombona com segurança.",
+    price: 30.00,
+    image: "https://lh3.googleusercontent.com/glsgmb/AMnFcur_RBwlW1jmXiteJq0HtcQKzLRzL2ZGuCmInjjz293OEjC75o8_7mrrKLLCIoAogmofXqOGOvxGE8jcQKXEQQGZdg=s608-k-rw-no-sc0x00ffffff",
+    has_variations: false
+  }
+];
+
+const CATEGORIES = ["Todos", "Combos", "Gás", "Água Mineral", "Acessórios"];
+
+/* ----------- CONFIG ----------- */
+const WHATSAPP_NUMBER = "555133408080";
+const PIX_KEY = "51 3340-8080";          // chave Pix (telefone) — substitua pela real
+const PIX_KEY_TYPE = "Telefone";
+const PIX_BENEFICIARY = "Nino Gás & Água Mineral";
+const DELIVERY_TIME = "15 a 45 min";
+
+// Bairros da Zona Norte de Porto Alegre que atendemos
+const COVERAGE_AREAS = [
+  "três figueiras", "tres figueiras",
+  "chácara das pedras", "chacara das pedras",
+  "vila jardim",
+  "jardim sabará", "jardim sabara",
+  "jardim itu", "jardim itú",
+  "vila ipiranga",
+  "jardim europa",
+  "cristo redentor",
+  "passo d'areia", "passo d areia", "passo da areia",
+  "boa vista"
+];
+// Prefixos de CEP (4 dígitos) cobrindo a área delimitada de entrega
+const COVERAGE_CEP_PREFIXES = [
+  "9104", // Passo d'Areia (parte)
+  "9122", // Jardim Sabará
+  "9132", // Vila Jardim
+  "9133", // Três Figueiras, Chácara das Pedras, Boa Vista
+  "9134", // Boa Vista
+  "9135", // Cristo Redentor (parte), Passo d'Areia (parte)
+  "9136", // Jardim Europa, Cristo Redentor
+  "9137", // Vila Ipiranga
+  "9138"  // Jardim Itu, Vila Ipiranga (parte)
+];
+
+// Produtos relacionados (cross-sell) — id → array de ids sugeridos
+const RELATED_MAP = {
+  "gas-13kg":         ["kit-valvula", "valvula"],
+  "gas-45kg":         ["kit-valvula", "valvula"],
+  "gas-5kg":          ["kit-valvula"],
+  "gas-20kg":         ["valvula"],
+  "agua-20l":         ["bomba-eletrica", "bomba-torneira", "suporte-galao"],
+  "kit-valvula":      ["gas-13kg"],
+  "valvula":          ["gas-13kg"],
+  "bomba-eletrica":   ["bomba-torneira", "suporte-galao"],
+  "bomba-torneira":   ["bomba-eletrica", "suporte-galao"],
+  "bomba-manual":     ["bomba-eletrica"],
+  "suporte-galao":    ["bomba-eletrica", "agua-20l"],
+  "combo-casa-nova":  ["kit-valvula", "bomba-eletrica"]
+};
+
+const TESTIMONIALS = [
+  { name: "Pedro M.", location: "Vila Jardim", rating: 5,
+    text: "Pedi às 21h achando que ia ficar sem gás até o dia seguinte. Em 25 minutos o entregador tava na porta. Atendimento de outro nível." },
+  { name: "Márcia S.", location: "Jardim Lindóia", rating: 5,
+    text: "Compro água mineral aqui há mais de 3 anos. O preço é justo, sempre chega no dia e o pessoal é super educado. Recomendo demais." },
+  { name: "João Paulo", location: "Boa Vista", rating: 5,
+    text: "O Nino é o cara. Já passei a indicação pra família inteira. Gás de qualidade, sempre na hora marcada e com nota fiscal." },
+  { name: "Ana Paula F.", location: "Higienópolis", rating: 5,
+    text: "Atendimento pelo WhatsApp é rápido, eles confirmam tudo, e o preço bate com o anunciado. Confio no Nino há anos." }
+];
+
+const FAQS = [
+  { q: "Quais bairros vocês atendem na Zona Norte?",
+    a: "Atendemos os seguintes bairros: Três Figueiras, Chácara das Pedras, Vila Jardim, Jardim Sabará, Jardim Itu, Vila Ipiranga, Jardim Europa, Cristo Redentor, Passo d'Areia e Boa Vista. A entrega é feita em 15 a 45 minutos, dependendo da distância e do trânsito. Se você está em outro bairro próximo, entre em contato pelo WhatsApp para confirmarmos." },
+  { q: "Vocês aceitam pagamento pelo programa Gás do Povo?",
+    a: "Sim! Somos credenciados para receber pagamentos pelo programa Gás do Povo (Auxílio Gás), benefício do Governo Federal. Para usar, basta selecionar essa forma de pagamento no checkout e informar o CPF do beneficiário. É indispensável que seu cadastro no CadÚnico esteja ativo e atualizado nos últimos 24 meses." },
+  { q: "O que é o programa Gás do Povo (Auxílio Gás)?",
+    a: "É um benefício bimestral do Governo Federal que cobre 100% do valor de referência do botijão de gás de 13kg, com base no preço médio nacional. Foi criado para ajudar famílias de baixa renda a manterem o gás de cozinha em casa. O pagamento é feito em conta digital ou bancária pelo próprio governo, e o beneficiário utiliza o saldo para retirar o botijão em distribuidores credenciados, como nós." },
+  { q: "Como sei se tenho direito ao Gás do Povo?",
+    a: "Você precisa estar inscrito no CadÚnico (Cadastro Único) com renda per capita de até meio salário mínimo, ou ter algum beneficiário do BPC na família. A seleção é feita pelo governo a cada bimestre, considerando critérios sociais (renda menor, mais pessoas na família, atualização recente do cadastro) e disponibilidade orçamentária. Para consultar se você é beneficiário ativo, acesse gasdopovo.mds.gov.br. Se ainda não tem CadÚnico, procure o CRAS mais próximo da sua casa." },
+  { q: "Quanto tempo dura um botijão P13 numa família de 4 pessoas?",
+    a: "Em média, um botijão de 13kg dura de 45 a 60 dias para uma família de 4 pessoas com uso doméstico (cozinhar 2 a 3 refeições por dia). Famílias que cozinham mais ou usam o forno com frequência podem trocar antes." },
+  { q: "Vocês entregam aos domingos e feriados?",
+    a: "Sim! Atendemos aos domingos e feriados das 09:00 às 14:00. De segunda a sábado, atendemos das 09:00 às 21:30. Se você fizer o pedido fora do horário, ele será visualizado assim que o próximo turno começar. A entrega é feita em 15 a 45 minutos a partir do horário de abertura." },
+  { q: "Aceitam cartão de crédito ou débito na entrega?",
+    a: "Sim. Aceitamos Pix, Cartão de Crédito, Cartão de Débito, Dinheiro e o programa Gás do Povo. O pagamento é feito direto com o entregador no momento da entrega — não precisa pagar antes." },
+  { q: "Como saber se o gás é original e seguro?",
+    a: "Trabalhamos apenas com marcas certificadas pela ANP (Supergasbras, Liquigás, Nacional Gás). Todos os botijões têm lacre íntegro, válvula em bom estado e nota fiscal. Se notar qualquer problema, troque na hora — sem custo." },
+  { q: "O galão de água é retornável? Preciso devolver o vasilhame?",
+    a: "Sim, o galão de 20L é retornável. Na sua primeira compra você paga uma caução pelo vasilhame, que é devolvida quando você não quiser mais comprar. Nas próximas compras, é só trocar o galão vazio pelo cheio." }
+];
+
+/* ----------- STORAGE (safe) ----------- */
+const STORAGE_KEYS = { CART: "ninogas:cart", CUSTOMER: "ninogas:customer" };
+function safeGet(key) {
+  try { const v = localStorage.getItem(key); return v ? JSON.parse(v) : null; }
+  catch { return null; }
+}
+function safeSet(key, value) {
+  try { localStorage.setItem(key, JSON.stringify(value)); }
+  catch {}
+}
+function safeRemove(key) { try { localStorage.removeItem(key); } catch {} }
+
+/* ----------- STATE ----------- */
+const state = {
+  category: "Todos",
+  search: "",
+  cart: safeGet(STORAGE_KEYS.CART) || [],
+  customer: safeGet(STORAGE_KEYS.CUSTOMER) || null,
+  modalProduct: null,
+  modalQty: 1,
+  modalVariation: null,
+  drawerView: "cart"
+};
+
+/* ----------- HELPERS ----------- */
+const $ = (sel, ctx = document) => ctx.querySelector(sel);
+const $$ = (sel, ctx = document) => Array.from(ctx.querySelectorAll(sel));
+const fmtBRL = (v) => v.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+const fmtBRLSplit = (v) => {
+  const [int, dec] = v.toFixed(2).split('.');
+  const intFmt = parseInt(int).toLocaleString('pt-BR');
+  return { int: intFmt, dec };
+};
+
+function showToast(text) {
+  const t = $('#toast');
+  $('#toastText').textContent = text;
+  t.classList.add('show');
+  clearTimeout(showToast._timer);
+  showToast._timer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+/* ----------- STORE STATUS (OPEN / CLOSED) ----------- */
+function getStoreStatus(date = new Date()) {
+  const day = date.getDay(); // 0 = Sun, 6 = Sat
+  const minutes = date.getHours() * 60 + date.getMinutes();
+  let openMin, closeMin, label;
+  if (day === 0) {
+    openMin = 9 * 60; closeMin = 14 * 60;
+    label = "Domingo: 09:00 – 14:00";
+  } else {
+    openMin = 9 * 60; closeMin = 21 * 60 + 30;
+    label = "Hoje: 09:00 – 21:30";
+  }
+  const isOpen = minutes >= openMin && minutes < closeMin;
+  return { isOpen, label };
+}
+
+/* ----------- NEXT SHIFT ----------- */
+const WEEKDAY_NAMES = ['domingo', 'segunda-feira', 'terça-feira', 'quarta-feira', 'quinta-feira', 'sexta-feira', 'sábado'];
+function getNextShiftDate(date = new Date()) {
+  const minutes = date.getHours() * 60 + date.getMinutes();
+  const todayOpen = 9 * 60; // every day opens at 09:00
+  // Before today's opening → today at 09:00
+  if (minutes < todayOpen) {
+    const d = new Date(date);
+    d.setHours(9, 0, 0, 0);
+    return d;
+  }
+  // Otherwise → tomorrow at 09:00
+  const d = new Date(date);
+  d.setDate(d.getDate() + 1);
+  d.setHours(9, 0, 0, 0);
+  return d;
+}
+function formatNextShift(now = new Date()) {
+  const next = getNextShiftDate(now);
+  const today0 = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const next0 = new Date(next.getFullYear(), next.getMonth(), next.getDate());
+  const diffDays = Math.round((next0 - today0) / (1000 * 60 * 60 * 24));
+  let label;
+  if (diffDays === 0) label = 'Hoje';
+  else if (diffDays === 1) label = 'Amanhã';
+  else label = WEEKDAY_NAMES[next.getDay()].charAt(0).toUpperCase() + WEEKDAY_NAMES[next.getDay()].slice(1);
+  return { time: '09:00', dayLabel: label, weekday: WEEKDAY_NAMES[next.getDay()] };
+}
+
+function renderStatusBadges() {
+  const { isOpen, label } = getStoreStatus();
+  const text = isOpen ? "Aberto agora" : "Loja Fechada";
+  [['#statusBadgeHeader', true], ['#statusBadgeFooter', false]].forEach(([sel, isHeader]) => {
+    const el = $(sel);
+    if (!el) return;
+    el.classList.toggle('is-open', isOpen);
+    const labelEl = el.querySelector('.label');
+    if (isHeader) {
+      labelEl.innerHTML = isOpen
+        ? '<span class="label-full">Loja </span>Aberta'
+        : '<span class="label-full">Loja </span>Fechada';
+    } else {
+      labelEl.textContent = isOpen ? "Aberto agora · " + label : "Fechado · " + label;
+    }
+    el.title = label;
+  });
+}
+
+/* ----------- CATEGORY TABS ----------- */
+function renderTabs() {
+  const tabs = $('#tabs');
+  tabs.innerHTML = '';
+  CATEGORIES.forEach(cat => {
+    const count = cat === "Todos" ? PRODUCTS.length : PRODUCTS.filter(p => p.category === cat).length;
+    const btn = document.createElement('button');
+    btn.className = 'tab' + (state.category === cat ? ' active' : '');
+    btn.setAttribute('role', 'tab');
+    btn.dataset.category = cat;
+    btn.innerHTML = `${cat} <span class="count">${count}</span>`;
+    btn.addEventListener('click', () => {
+      state.category = cat;
+      renderTabs();
+      renderGrid();
+    });
+    tabs.appendChild(btn);
+  });
+}
+
+/* ----------- PRODUCT GRID ----------- */
+function getFilteredProducts() {
+  const q = state.search.trim().toLowerCase();
+  return PRODUCTS.filter(p => {
+    const okCat = state.category === "Todos" || p.category === state.category;
+    const okQuery = !q ||
+      p.name.toLowerCase().includes(q) ||
+      p.category.toLowerCase().includes(q) ||
+      p.description.toLowerCase().includes(q);
+    return okCat && okQuery;
+  });
+}
+function renderGrid() {
+  const grid = $('#grid');
+  const items = getFilteredProducts();
+  grid.innerHTML = '';
+
+  if (items.length === 0) {
+    grid.innerHTML = `
+      <div class="no-results" style="grid-column: 1 / -1;">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#8a92a3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+        <h3>Nenhum produto encontrado</h3>
+        <p>Tente outra busca ou categoria.</p>
+      </div>`;
+    return;
+  }
+
+  items.forEach(p => {
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.setAttribute('aria-label', p.name);
+
+    const tagClass = p.is_combo ? 'card-tag tag-oferta' : 'card-tag';
+    const tagLabel = p.is_combo ? '🔥 OFERTA' : p.category;
+
+    let priceBlock;
+    if (p.is_combo && p.original_price) {
+      const discount = Math.round((1 - p.price / p.original_price) * 100);
+      priceBlock = `
+        <span class="card-price-original">R$ ${fmtBRLSplit(p.original_price).int},${fmtBRLSplit(p.original_price).dec}</span>
+        <div class="card-price">
+          <small>R$</small> ${fmtBRLSplit(p.price).int}<small>,${fmtBRLSplit(p.price).dec}</small>
+          <span class="card-discount">−${discount}%</span>
+        </div>`;
+    } else {
+      const fromLabel = p.has_variations ? '<div class="card-price-from">A partir de</div>' : '';
+      priceBlock = `
+        ${fromLabel}
+        <div class="card-price">
+          <small>R$</small> ${fmtBRLSplit(p.price).int}<small>,${fmtBRLSplit(p.price).dec}</small>
+        </div>`;
+    }
+
+    card.innerHTML = `
+      <div class="card-img is-loading">
+        <span class="${tagClass}">${tagLabel}</span>
+        <img src="${p.image}" alt="${p.name}" loading="lazy"
+             onload="this.parentElement.classList.remove('is-loading')"
+             onerror="this.parentElement.classList.remove('is-loading'); this.style.opacity='.4'; this.src='assets/mascote.png';"/>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">${p.name}</h3>
+        <p class="card-desc">${p.short_description}</p>
+        <div class="card-price-row">${priceBlock}</div>
+        <button class="card-add-btn" data-add-id="${p.id}" aria-label="Adicionar ao carrinho: ${p.name}">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/><path d="M2.5 3h2.5l2.4 12.3a2 2 0 0 0 2 1.7h8.3a2 2 0 0 0 2-1.6L21.5 7H6"/></svg>
+          ${p.has_variations ? 'Escolher marca' : 'Adicionar ao Carrinho'}
+        </button>
+        <div class="card-cta">
+          Ver detalhes
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </div>
+      </div>
+    `;
+
+    // Card click → open details modal
+    card.addEventListener('click', () => openProductModal(p));
+    // Orange button → add directly (or open modal for variations)
+    const addBtn = card.querySelector('.card-add-btn');
+    addBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (p.has_variations) {
+        openProductModal(p);
+      } else {
+        flyToCart(card.querySelector('.card-img img'));
+        addToCart(p, 1, null);
+      }
+    });
+    grid.appendChild(card);
+  });
+}
+
+/* ----------- PRODUCT MODAL ----------- */
+function openProductModal(product) {
+  state.modalProduct = product;
+  state.modalQty = 1;
+  state.modalVariation = null;
+  renderModal();
+  $('#modalBackdrop').classList.add('open');
+  $('#productModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeProductModal() {
+  $('#modalBackdrop').classList.remove('open');
+  $('#productModal').classList.remove('open');
+  state.modalProduct = null;
+  // re-enable scroll only if drawer also closed
+  if (!$('#drawer').classList.contains('open')) document.body.style.overflow = '';
+}
+function getModalEffectivePrice() {
+  const p = state.modalProduct;
+  if (!p) return 0;
+  if (p.has_variations) {
+    return state.modalVariation ? state.modalVariation.price : p.price;
+  }
+  return p.price;
+}
+function renderModal() {
+  const p = state.modalProduct;
+  if (!p) return;
+  const grid = $('#modalGrid');
+  const price = getModalEffectivePrice();
+  const split = fmtBRLSplit(price);
+
+  let variationHTML = '';
+  if (p.has_variations) {
+    variationHTML = `
+      <div class="variation-block">
+        <div class="label">Escolha a marca <span class="req">*</span></div>
+        <div class="variation-list" id="variationList">
+          ${p.variations.map((v, i) => `
+            <label class="variation-item ${state.modalVariation && state.modalVariation.name === v.name ? 'selected' : ''}" data-idx="${i}">
+              <input type="radio" name="variation" value="${i}" ${state.modalVariation && state.modalVariation.name === v.name ? 'checked' : ''}/>
+              <span class="radio"></span>
+              <span class="v-name">${v.name}</span>
+              <span class="v-price">${fmtBRL(v.price)}</span>
+            </label>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  const needsVariation = p.has_variations && !state.modalVariation;
+  const priceLabel = p.has_variations ? (state.modalVariation ? "Preço" : "A partir de") : "Preço";
+
+  // Combo: show what's included
+  let comboBlock = '';
+  if (p.is_combo && p.combo_items) {
+    comboBlock = `
+      <div style="background:linear-gradient(135deg,#fff7ec 0%,#ffe9d4 100%);border:1px solid #ffd2b0;border-radius:10px;padding:12px 14px;">
+        <div style="font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:#c64200;margin-bottom:6px;">📦 O que vem no combo</div>
+        ${p.combo_items.map(it => `<div style="font-size:13.5px;color:#6b2c00;font-weight:600;line-height:1.5;">✓ ${it}</div>`).join('')}
+      </div>
+    `;
+  }
+
+  // Original price for combos
+  let priceMarkup;
+  if (p.is_combo && p.original_price) {
+    const discount = Math.round((1 - p.price / p.original_price) * 100);
+    priceMarkup = `
+      <div class="modal-price-label">${priceLabel}</div>
+      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;">
+        <div class="modal-price"><small>R$</small> ${split.int}<small>,${split.dec}</small></div>
+        <div>
+          <span style="text-decoration:line-through;color:var(--muted);font-size:14px;font-weight:600;">R$ ${fmtBRLSplit(p.original_price).int},${fmtBRLSplit(p.original_price).dec}</span>
+          <span class="card-discount" style="margin-left:4px;">−${discount}%</span>
+        </div>
+      </div>
+    `;
+  } else {
+    priceMarkup = `
+      <div class="modal-price-label">${priceLabel}</div>
+      <div class="modal-price"><small>R$</small> ${split.int}<small>,${split.dec}</small></div>
+    `;
+  }
+
+  // Related products
+  const relatedIds = (RELATED_MAP[p.id] || []).filter(id => id !== p.id);
+  let relatedBlock = '';
+  if (relatedIds.length > 0) {
+    const items = relatedIds.map(id => PRODUCTS.find(x => x.id === id)).filter(Boolean).slice(0, 3);
+    if (items.length > 0) {
+      relatedBlock = `
+        <div class="related-block">
+          <div class="label">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+            Costuma vir junto
+          </div>
+          <div class="related-list">
+            ${items.map(it => `
+              <div class="related-item" data-related-id="${it.id}">
+                <div class="ri-img"><img src="${it.image}" alt="${it.name}" onerror="this.style.opacity='.4'; this.src='assets/mascote.png';"/></div>
+                <div class="ri-info">
+                  <div class="ri-name">${it.name}</div>
+                  <div class="ri-price">${it.has_variations ? 'A partir de ' : ''}${fmtBRL(it.price)}</div>
+                </div>
+                <button class="ri-add" aria-label="Ver ${it.name}">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                </button>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+    }
+  }
+
+  grid.innerHTML = `
+    <div class="modal-img">
+      <img src="${p.image}" alt="${p.name}" onerror="this.style.opacity='.4'; this.src='assets/mascote.png';"/>
+    </div>
+    <div class="modal-info">
+      <span class="modal-cat">${p.is_combo ? '🔥 Oferta · ' + p.category : p.category}</span>
+      <h2 class="modal-title" id="modalTitle">${p.name}</h2>
+      <p class="modal-desc">${p.description}</p>
+
+      ${comboBlock}
+
+      <div>${priceMarkup}</div>
+
+      ${variationHTML}
+
+      <div class="qty-row">
+        <span class="label">Quantidade</span>
+        <div class="qty-control" role="group" aria-label="Quantidade">
+          <button id="qtyMinus" aria-label="Diminuir" ${state.modalQty <= 1 ? 'disabled' : ''}>−</button>
+          <span class="qty">${state.modalQty}</span>
+          <button id="qtyPlus" aria-label="Aumentar">+</button>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button class="btn btn-primary btn-block" id="modalAddBtn" ${needsVariation ? 'disabled' : ''}>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1.5"/><circle cx="18" cy="21" r="1.5"/><path d="M2.5 3h2.5l2.4 12.3a2 2 0 0 0 2 1.7h8.3a2 2 0 0 0 2-1.6L21.5 7H6"/></svg>
+          ${needsVariation ? 'Selecione uma marca' : 'Adicionar ao carrinho · ' + fmtBRL(price * state.modalQty)}
+        </button>
+      </div>
+
+      ${relatedBlock}
+    </div>
+  `;
+
+  // Bind events
+  $('#qtyMinus').addEventListener('click', () => { if (state.modalQty > 1) { state.modalQty--; renderModal(); } });
+  $('#qtyPlus').addEventListener('click', () => { state.modalQty++; renderModal(); });
+
+  if (p.has_variations) {
+    $$('#variationList .variation-item').forEach(el => {
+      el.addEventListener('click', () => {
+        const idx = parseInt(el.dataset.idx, 10);
+        state.modalVariation = p.variations[idx];
+        renderModal();
+      });
+    });
+  }
+
+  $('#modalAddBtn').addEventListener('click', () => {
+    if (needsVariation) return;
+    addToCart(p, state.modalQty, state.modalVariation);
+    closeProductModal();
+  });
+
+  // Related products → open their modals
+  $$('#modalGrid .related-item').forEach(el => {
+    el.addEventListener('click', () => {
+      const id = el.dataset.relatedId;
+      const rp = PRODUCTS.find(x => x.id === id);
+      if (rp) openProductModal(rp);
+    });
+  });
+}
+
+/* ----------- FLY-TO-CART ANIMATION ----------- */
+function flyToCart(srcImg) {
+  if (!srcImg) return;
+  const cartBtn = $('#cartOpenBtn');
+  if (!cartBtn) return;
+  const srcRect = srcImg.getBoundingClientRect();
+  const dstRect = cartBtn.getBoundingClientRect();
+  const clone = document.createElement('div');
+  clone.className = 'fly-clone';
+  clone.style.left = srcRect.left + 'px';
+  clone.style.top = srcRect.top + 'px';
+  clone.style.width = srcRect.width + 'px';
+  clone.style.height = srcRect.height + 'px';
+  const img = document.createElement('img');
+  img.src = srcImg.src;
+  clone.appendChild(img);
+  document.body.appendChild(clone);
+  // Force reflow then animate
+  requestAnimationFrame(() => {
+    const dx = (dstRect.left + dstRect.width / 2) - (srcRect.left + srcRect.width / 2);
+    const dy = (dstRect.top + dstRect.height / 2) - (srcRect.top + srcRect.height / 2);
+    clone.style.transform = `translate(${dx}px, ${dy}px) scale(.15)`;
+    clone.style.opacity = '0.2';
+  });
+  setTimeout(() => {
+    clone.remove();
+    cartBtn.classList.add('bump');
+    setTimeout(() => cartBtn.classList.remove('bump'), 500);
+  }, 700);
+}
+
+/* ----------- CART ----------- */
+function makeCartUid(productId, variationName) {
+  return variationName ? `${productId}::${variationName}` : productId;
+}
+function addToCart(product, qty, variation) {
+  const uid = makeCartUid(product.id, variation && variation.name);
+  const unit_price = variation ? variation.price : product.price;
+  const existing = state.cart.find(it => it.uid === uid);
+  if (existing) {
+    existing.qty += qty;
+  } else {
+    state.cart.push({
+      uid,
+      id: product.id,
+      name: product.name,
+      image: product.image,
+      unit_price,
+      qty,
+      variation: variation ? variation.name : null
+    });
+  }
+  saveCart();
+  renderCartUI();
+  showToast(`✓ ${product.name} adicionado`);
+}
+function updateCartQty(uid, delta) {
+  const item = state.cart.find(it => it.uid === uid);
+  if (!item) return;
+  item.qty += delta;
+  if (item.qty <= 0) {
+    state.cart = state.cart.filter(it => it.uid !== uid);
+  }
+  saveCart();
+  renderCartUI();
+}
+function removeFromCart(uid) {
+  state.cart = state.cart.filter(it => it.uid !== uid);
+  saveCart();
+  renderCartUI();
+}
+function cartSubtotal() {
+  return state.cart.reduce((s, it) => s + it.unit_price * it.qty, 0);
+}
+function cartTotalItems() {
+  return state.cart.reduce((s, it) => s + it.qty, 0);
+}
+function saveCart() {
+  if (state.cart.length === 0) safeRemove(STORAGE_KEYS.CART);
+  else safeSet(STORAGE_KEYS.CART, state.cart);
+}
+
+/* ----------- DRAWER (CART + CHECKOUT) ----------- */
+function openDrawer(view = 'cart') {
+  state.drawerView = view;
+  $('#drawer').classList.add('open');
+  $('#modalBackdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  renderDrawer();
+}
+function closeDrawer() {
+  $('#drawer').classList.remove('open');
+  if (!$('#productModal').classList.contains('open')) {
+    $('#modalBackdrop').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+function renderCartUI() {
+  // Header counter
+  const total = cartTotalItems();
+  const counter = $('#cartCount');
+  counter.textContent = total;
+  counter.classList.toggle('hidden', total === 0);
+  // Hide reorder banner if cart now has items
+  renderReorderBanner();
+  // Drawer content if open
+  if ($('#drawer').classList.contains('open')) renderDrawer();
+}
+function renderDrawer() {
+  const content = $('#drawerContent');
+  const titleText = $('#drawerTitleText');
+
+  if (state.drawerView === 'cart') {
+    titleText.textContent = `Seu carrinho${state.cart.length ? ` (${cartTotalItems()})` : ''}`;
+    if (state.cart.length === 0) {
+      const reorderHTML = state.customer && state.customer.lastOrder
+        ? `<button class="btn btn-ghost" id="reorderInDrawerBtn" style="margin-top:14px;">
+             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg>
+             Repetir último pedido
+           </button>`
+        : '';
+      content.innerHTML = `
+        <div class="drawer-body">
+          <div class="drawer-empty">
+            <div class="mascote-mini"><img src="assets/mascote.png" alt="Mascote Nino"/></div>
+            <h4>O Nino tá esperando seu pedido!</h4>
+            <p>Adicione produtos para começar.</p>
+            ${reorderHTML}
+          </div>
+        </div>`;
+      const rb = $('#reorderInDrawerBtn');
+      if (rb) rb.addEventListener('click', repeatLastOrder);
+      return;
+    }
+
+    const itemsHTML = state.cart.map(it => `
+      <div class="cart-item">
+        <div class="cart-item-img"><img src="${it.image}" alt="${it.name}" onerror="this.style.opacity='.4'; this.src='assets/mascote.png';"/></div>
+        <div class="cart-item-info">
+          <div class="cart-item-name">${it.name}</div>
+          ${it.variation ? `<div class="cart-item-variation">${it.variation}</div>` : ''}
+          <div class="cart-item-bottom">
+            <div class="cart-item-price">${fmtBRL(it.unit_price * it.qty)}</div>
+            <div class="cart-qty">
+              <button data-action="dec" data-uid="${it.uid}" aria-label="Diminuir">−</button>
+              <span class="q">${it.qty}</span>
+              <button data-action="inc" data-uid="${it.uid}" aria-label="Aumentar">+</button>
+            </div>
+          </div>
+          <button class="cart-item-remove" data-action="remove" data-uid="${it.uid}">Remover</button>
+        </div>
+      </div>
+    `).join('');
+
+    content.innerHTML = `
+      <div class="drawer-body">${itemsHTML}</div>
+      <div class="drawer-foot">
+        <div class="subtotal-row">
+          <span class="label">Subtotal</span>
+          <span class="value">${fmtBRL(cartSubtotal())}</span>
+        </div>
+        <button class="btn btn-primary btn-block" id="goCheckoutBtn">
+          Finalizar Pedido
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+    `;
+
+    content.addEventListener('click', drawerClickHandler);
+    $('#goCheckoutBtn').addEventListener('click', () => { state.drawerView = 'checkout'; renderDrawer(); });
+  } else {
+    // Checkout view
+    titleText.textContent = 'Finalizar pedido';
+
+    const c = state.customer || {};
+    const summaryRows = state.cart.map(it => `
+      <div class="row">
+        <span>${it.qty}× ${it.name}${it.variation ? ` <span style="color:var(--muted);">(${it.variation})</span>` : ''}</span>
+        <span>${fmtBRL(it.unit_price * it.qty)}</span>
+      </div>
+    `).join('');
+
+    content.innerHTML = `
+      <div class="checkout">
+        <button class="checkout-back" id="backToCartBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+          Voltar ao carrinho
+        </button>
+
+        <div class="checkout-summary">
+          ${summaryRows}
+          <div class="row total">
+            <span>Total</span>
+            <span>${fmtBRL(cartSubtotal())}</span>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="f_name">Nome <span class="req">*</span></label>
+          <input id="f_name" type="text" autocomplete="name" placeholder="Seu nome completo" value="${c.name || ''}" required />
+          <span class="field-error" id="err_name"></span>
+        </div>
+
+        <div class="field">
+          <label for="f_phone">Telefone <span class="req">*</span></label>
+          <input id="f_phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(51) 9 9999-9999" value="${c.phone || ''}" required />
+          <span class="field-error" id="err_phone"></span>
+        </div>
+
+        <div class="field">
+          <label for="f_address">Endereço completo + ponto de referência <span class="req">*</span></label>
+          <textarea id="f_address" placeholder="Ex: Rua Exemplo, 123 — Bairro. Apto 401. Próximo ao mercado X." required>${c.address || ''}</textarea>
+          <span class="field-error" id="err_address"></span>
+        </div>
+
+        <div class="field">
+          <label for="f_payment">Forma de pagamento <span class="req">*</span></label>
+          <select id="f_payment" required>
+            <option value="">Selecione...</option>
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="Pix">Pix</option>
+            <option value="Cartão de Crédito">Cartão de Crédito</option>
+            <option value="Cartão de Débito">Cartão de Débito</option>
+            <option value="Gás do Povo">Gás do Povo (benefício do governo)</option>
+          </select>
+          <span class="field-error" id="err_payment"></span>
+        </div>
+
+        <!-- CPF field (shown only for Gás do Povo) -->
+        <div class="field cpf-field" id="cpfField">
+          <label for="f_cpf">CPF do beneficiário <span class="req">*</span></label>
+          <input id="f_cpf" type="text" inputmode="numeric" placeholder="000.000.000-00" maxlength="14" autocomplete="off" />
+          <span class="hint">Necessário para validarmos o benefício no programa.</span>
+          <span class="field-error" id="err_cpf"></span>
+        </div>
+
+        <!-- Gás do Povo info card (shown only for Gás do Povo) -->
+        <div class="gp-info-card" id="gpInfoCard">
+          <div class="gp-info-head">
+            <span class="gp-mini"><img src="assets/gas-do-povo.png" alt="Logo Gás do Povo" /></span>
+            <span>Pagamento via Gás do Povo</span>
+          </div>
+          <p>Confirme que seu cadastro no <strong>CadÚnico</strong> está atualizado nos últimos 24 meses. <a href="https://gasdopovo.mds.gov.br/" target="_blank" rel="noopener">Consultar meu benefício →</a></p>
+        </div>
+
+        <!-- Troco field (shown only for Dinheiro) -->
+        <div class="field troco-field" id="trocoField">
+          <label for="f_troco">Precisa de troco? Para quanto?</label>
+          <input id="f_troco" type="text" inputmode="decimal" placeholder="Ex: 200 (deixe vazio se não precisa)" />
+          <span class="hint">O entregador levará o troco preparado.</span>
+        </div>
+
+        <!-- Pix card (shown only for Pix) -->
+        <div class="pix-card" id="pixCard">
+          <div class="pix-head">
+            <div class="pix-icon">PIX</div>
+            <div>
+              <div class="pix-title">Pague com Pix</div>
+              <div class="pix-sub">${PIX_KEY_TYPE} · ${PIX_BENEFICIARY}</div>
+            </div>
+          </div>
+          <div class="pix-key-row">
+            <span class="pix-key" id="pixKey">${PIX_KEY}</span>
+            <button class="pix-copy" id="pixCopyBtn" type="button">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+              <span>Copiar</span>
+            </button>
+          </div>
+          <p style="font-size:11.5px;color:#2c8245;line-height:1.4;margin:0;">Você também pode pagar na entrega — só nos avise no WhatsApp.</p>
+        </div>
+      </div>
+
+      <div class="drawer-foot">
+        <button class="btn btn-whats btn-block" id="submitOrderBtn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91a9.84 9.84 0 0 0-2.91-7.01zM12.05 20.15h-.01a8.22 8.22 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.82c0 4.54-3.7 8.23-8.24 8.23z"/></svg>
+          Concluir Pedido pelo WhatsApp
+        </button>
+        <p style="font-size:11px; color:var(--muted); text-align:center; margin-top:8px;">
+          Você será redirecionado para o WhatsApp com o pedido pronto.
+        </p>
+      </div>
+    `;
+
+    // Restore payment selection after form is in DOM
+    if (c.lastPayment) $('#f_payment').value = c.lastPayment;
+    updatePaymentBlocks();
+
+    $('#backToCartBtn').addEventListener('click', () => { state.drawerView = 'cart'; renderDrawer(); });
+    $('#submitOrderBtn').addEventListener('click', submitOrder);
+    $('#f_payment').addEventListener('change', updatePaymentBlocks);
+    $('#pixCopyBtn').addEventListener('click', copyPixKey);
+
+    // CPF auto-mask
+    const cpfInput = $('#f_cpf');
+    if (cpfInput) {
+      cpfInput.addEventListener('input', (e) => {
+        const cursor = e.target.selectionEnd;
+        const oldLen = e.target.value.length;
+        e.target.value = maskCpf(e.target.value);
+        // keep cursor approximately in place
+        const diff = e.target.value.length - oldLen;
+        try { e.target.setSelectionRange(cursor + diff, cursor + diff); } catch {}
+      });
+    }
+  }
+}
+function drawerClickHandler(e) {
+  const btn = e.target.closest('button[data-action]');
+  if (!btn) return;
+  const uid = btn.dataset.uid;
+  const action = btn.dataset.action;
+  if (action === 'inc') updateCartQty(uid, +1);
+  else if (action === 'dec') updateCartQty(uid, -1);
+  else if (action === 'remove') removeFromCart(uid);
+}
+
+/* ----------- PAYMENT-DEPENDENT BLOCKS ----------- */
+let gasPovoPopupShown = false; // show only once per checkout session
+function updatePaymentBlocks() {
+  const sel = $('#f_payment');
+  if (!sel) return;
+  const value = sel.value;
+  const trocoField = $('#trocoField');
+  const pixCard = $('#pixCard');
+  const cpfField = $('#cpfField');
+  const gpInfoCard = $('#gpInfoCard');
+  if (trocoField) trocoField.classList.toggle('show', value === 'Dinheiro');
+  if (pixCard) pixCard.classList.toggle('show', value === 'Pix');
+  if (cpfField) cpfField.classList.toggle('show', value === 'Gás do Povo');
+  if (gpInfoCard) gpInfoCard.classList.toggle('show', value === 'Gás do Povo');
+
+  // Trigger Gás do Povo popup the first time this is selected in the session
+  if (value === 'Gás do Povo' && !gasPovoPopupShown) {
+    gasPovoPopupShown = true;
+    setTimeout(openGasPovoModal, 200);
+  }
+  // Reset flag if user switches away
+  if (value !== 'Gás do Povo') gasPovoPopupShown = false;
+}
+
+/* ----------- GÁS DO POVO MODAL ----------- */
+function openGasPovoModal() {
+  $('#alertBackdrop').classList.add('open');
+  $('#gasPovoModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeGasPovoModal() {
+  $('#gasPovoModal').classList.remove('open');
+  // Only close backdrop if no other alert is open
+  if (!$('#closedAlert').classList.contains('open')) {
+    $('#alertBackdrop').classList.remove('open');
+    const drawerOpen = $('#drawer').classList.contains('open');
+    const productOpen = $('#productModal').classList.contains('open');
+    if (!drawerOpen && !productOpen) document.body.style.overflow = '';
+  }
+}
+
+/* ----------- CPF MASK & VALIDATION ----------- */
+function maskCpf(value) {
+  const digits = value.replace(/\D/g, '').substring(0, 11);
+  if (digits.length <= 3) return digits;
+  if (digits.length <= 6) return digits.replace(/(\d{3})(\d+)/, '$1.$2');
+  if (digits.length <= 9) return digits.replace(/(\d{3})(\d{3})(\d+)/, '$1.$2.$3');
+  return digits.replace(/(\d{3})(\d{3})(\d{3})(\d+)/, '$1.$2.$3-$4');
+}
+function isCpfValidFormat(cpf) {
+  const digits = cpf.replace(/\D/g, '');
+  return digits.length === 11;
+}
+
+function copyPixKey() {
+  const btn = $('#pixCopyBtn');
+  const key = PIX_KEY;
+  const onDone = () => {
+    btn.classList.add('copied');
+    btn.querySelector('span').textContent = 'Copiado!';
+    setTimeout(() => {
+      btn.classList.remove('copied');
+      btn.querySelector('span').textContent = 'Copiar';
+    }, 1800);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(key).then(onDone).catch(() => fallbackCopy(key, onDone));
+  } else {
+    fallbackCopy(key, onDone);
+  }
+}
+function fallbackCopy(text, cb) {
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); cb && cb(); } catch {}
+  ta.remove();
+}
+
+/* ----------- REPEAT LAST ORDER ----------- */
+function repeatLastOrder() {
+  if (!state.customer || !state.customer.lastOrder) return;
+  state.cart = JSON.parse(JSON.stringify(state.customer.lastOrder));
+  saveCart();
+  renderCartUI();
+  showToast('Último pedido carregado no carrinho!');
+}
+
+/* ----------- COVERAGE CHECK ----------- */
+function checkCoverage(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) return null;
+  // CEP check (digits only)
+  const digits = q.replace(/\D/g, '');
+  if (digits.length >= 4) {
+    const prefix4 = digits.substring(0, 4);
+    if (COVERAGE_CEP_PREFIXES.includes(prefix4)) return { ok: true, by: 'cep' };
+    // CEPs de Porto Alegre começam com 9 — se for 8 dígitos e POA, mas fora da zona
+    if (digits.length === 8 && (digits.startsWith('90') || digits.startsWith('91') || digits.startsWith('92'))) {
+      return { ok: false, by: 'cep' };
+    }
+  }
+  // Bairro check
+  for (const area of COVERAGE_AREAS) {
+    if (q.includes(area) || area.includes(q)) return { ok: true, by: 'bairro' };
+  }
+  // If the user typed something that looks like a bairro (only letters), but didn't match
+  if (/^[a-záâãéêíóôõúç'\s]+$/i.test(q) && q.length >= 3) {
+    return { ok: false, by: 'bairro' };
+  }
+  return null;
+}
+
+/* ----------- CHECKOUT SUBMIT (WhatsApp) ----------- */
+function submitOrder() {
+  // Validate
+  let valid = true;
+  const fields = [
+    { id: 'f_name',    err: 'err_name',    msg: 'Informe seu nome.' },
+    { id: 'f_phone',   err: 'err_phone',   msg: 'Informe seu telefone.' },
+    { id: 'f_address', err: 'err_address', msg: 'Informe o endereço completo.' },
+    { id: 'f_payment', err: 'err_payment', msg: 'Escolha a forma de pagamento.' }
+  ];
+  fields.forEach(f => {
+    const el = $('#' + f.id);
+    const errEl = $('#' + f.err);
+    el.style.borderColor = '';
+    errEl.textContent = '';
+    if (!el.value.trim()) {
+      valid = false;
+      errEl.textContent = f.msg;
+      el.style.borderColor = 'var(--red)';
+    }
+  });
+
+  // CPF validation when payment is Gás do Povo
+  const paymentVal = $('#f_payment').value;
+  if (paymentVal === 'Gás do Povo') {
+    const cpfEl = $('#f_cpf');
+    const cpfErr = $('#err_cpf');
+    cpfEl.style.borderColor = '';
+    cpfErr.textContent = '';
+    const cpfValue = (cpfEl.value || '').trim();
+    if (!cpfValue) {
+      valid = false;
+      cpfErr.textContent = 'CPF é obrigatório para o pagamento via Gás do Povo.';
+      cpfEl.style.borderColor = 'var(--red)';
+    } else if (!isCpfValidFormat(cpfValue)) {
+      valid = false;
+      cpfErr.textContent = 'CPF inválido. Digite os 11 dígitos.';
+      cpfEl.style.borderColor = 'var(--red)';
+    }
+  }
+
+  if (!valid) return;
+  if (state.cart.length === 0) {
+    showToast('Seu carrinho está vazio');
+    return;
+  }
+
+  const name    = $('#f_name').value.trim();
+  const phone   = $('#f_phone').value.trim();
+  const address = $('#f_address').value.trim();
+  const payment = $('#f_payment').value;
+  const trocoEl = $('#f_troco');
+  const troco   = trocoEl ? trocoEl.value.trim() : '';
+  const cpfEl   = $('#f_cpf');
+  const cpf     = cpfEl ? cpfEl.value.trim() : '';
+
+  // Save customer for future visits (recompra de 1 clique)
+  safeSet(STORAGE_KEYS.CUSTOMER, {
+    name, phone, address,
+    lastPayment: payment,
+    lastOrder: JSON.parse(JSON.stringify(state.cart)),
+    savedAt: new Date().toISOString()
+  });
+  state.customer = safeGet(STORAGE_KEYS.CUSTOMER);
+
+  // Build message
+  const lines = [];
+  lines.push(`Olá! Me chamo ${name}. Gostaria de realizar um pedido.`);
+  lines.push('');
+  lines.push(`Endereço: ${address}`);
+  lines.push(`Telefone: ${phone}`);
+  let paymentLine = `Forma de Pagamento: ${payment}`;
+  if (payment === 'Dinheiro' && troco) {
+    paymentLine += ` (troco para R$ ${troco})`;
+  } else if (payment === 'Dinheiro') {
+    paymentLine += ' (não precisa de troco)';
+  }
+  lines.push(paymentLine);
+  if (payment === 'Gás do Povo' && cpf) {
+    lines.push(`CPF do beneficiário: ${cpf}`);
+    lines.push(`(Confirmo que meus dados no CadÚnico estão atualizados)`);
+  }
+  lines.push('');
+  lines.push('Pedido:');
+  state.cart.forEach(it => {
+    const productLabel = it.variation ? `${it.name} - ${it.variation}` : it.name;
+    lines.push(`${it.qty}x ${productLabel} - ${fmtBRL(it.unit_price)}`);
+  });
+  lines.push('');
+  lines.push(`Total da Compra: ${fmtBRL(cartSubtotal())}`);
+
+  const message = lines.join('\n');
+  const sendNow = () => {
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+    window.open(url, '_blank', 'noopener');
+    showToast('Pedido enviado para o WhatsApp!');
+  };
+
+  // If store is closed, ask user to confirm before redirecting
+  const { isOpen } = getStoreStatus();
+  if (!isOpen) {
+    openClosedAlert('checkout', sendNow);
+  } else {
+    sendNow();
+  }
+}
+
+/* ----------- CLOSED-STORE ALERT POPUP ----------- */
+let pageLoadAlertShown = false;
+function openClosedAlert(context, onConfirm) {
+  // context: 'pageload' | 'checkout'
+  const shift = formatNextShift();
+  const whenEl = $('#alertShiftWhen');
+  whenEl.innerHTML = `${shift.dayLabel} às ${shift.time} <small>${shift.dayLabel === 'Hoje' || shift.dayLabel === 'Amanhã' ? shift.weekday.charAt(0).toUpperCase() + shift.weekday.slice(1) : ''}</small>`;
+
+  const actions = $('#alertActions');
+  if (context === 'checkout') {
+    actions.innerHTML = `
+      <button class="btn btn-secondary" id="alertCancelBtn">Cancelar</button>
+      <button class="btn btn-primary" id="alertConfirmBtn">
+        Enviar mesmo assim
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </button>
+    `;
+    $('#alertCancelBtn').addEventListener('click', closeClosedAlert);
+    $('#alertConfirmBtn').addEventListener('click', () => {
+      closeClosedAlert();
+      if (typeof onConfirm === 'function') onConfirm();
+    });
+  } else {
+    actions.innerHTML = `
+      <button class="btn btn-primary" id="alertOkBtn" style="flex:1;">
+        Entendi, continuar comprando
+      </button>
+    `;
+    $('#alertOkBtn').addEventListener('click', closeClosedAlert);
+  }
+
+  $('#alertBackdrop').classList.add('open');
+  $('#closedAlert').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeClosedAlert() {
+  $('#alertBackdrop').classList.remove('open');
+  $('#closedAlert').classList.remove('open');
+  // restore scroll only if no other overlay open
+  const drawerOpen = $('#drawer').classList.contains('open');
+  const productOpen = $('#productModal').classList.contains('open');
+  if (!drawerOpen && !productOpen) document.body.style.overflow = '';
+}
+
+/* ----------- TESTIMONIALS ----------- */
+function renderTestimonials() {
+  const grid = $('#testimonialsGrid');
+  if (!grid) return;
+  grid.innerHTML = TESTIMONIALS.map(t => {
+    const initial = t.name.charAt(0).toUpperCase();
+    const stars = '★'.repeat(t.rating) + '☆'.repeat(5 - t.rating);
+    return `
+      <div class="testimonial">
+        <div class="stars">${stars}</div>
+        <p class="quote">"${t.text}"</p>
+        <div class="author">
+          <div class="avatar">${initial}</div>
+          <div class="author-info">
+            <div class="author-name">${t.name}</div>
+            <div class="author-loc">${t.location}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+/* ----------- FAQ ----------- */
+function renderFaq() {
+  const list = $('#faqList');
+  if (!list) return;
+  list.innerHTML = FAQS.map((f, i) => `
+    <div class="faq-item" data-idx="${i}">
+      <button class="faq-q" aria-expanded="false">
+        <span>${f.q}</span>
+        <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+      </button>
+      <div class="faq-a"><div>${f.a}</div></div>
+    </div>
+  `).join('');
+  list.addEventListener('click', (e) => {
+    const btn = e.target.closest('.faq-q');
+    if (!btn) return;
+    const item = btn.parentElement;
+    const wasOpen = item.classList.contains('open');
+    list.querySelectorAll('.faq-item').forEach(el => el.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+}
+
+/* ----------- REORDER BANNER ----------- */
+function renderReorderBanner() {
+  const container = $('#reorderBannerContainer');
+  if (!container) return;
+  const c = state.customer;
+  if (!c || !c.lastOrder || c.lastOrder.length === 0 || state.cart.length > 0) {
+    container.innerHTML = '';
+    return;
+  }
+  const firstName = (c.name || '').split(' ')[0] || 'cliente';
+  const itemCount = c.lastOrder.reduce((s, it) => s + it.qty, 0);
+  container.innerHTML = `
+    <div class="reorder-banner">
+      <div class="rb-mascote"><img src="assets/mascote.png" alt="Mascote"/></div>
+      <div class="rb-text">
+        <div class="rb-greet">Olá de novo, ${firstName}! 👋</div>
+        <div class="rb-name">Repetir seu último pedido?</div>
+        <button class="rb-action" id="reorderBtn">→ Adicionar ${itemCount} ${itemCount === 1 ? 'item' : 'itens'} ao carrinho</button>
+      </div>
+      <button class="rb-dismiss" id="reorderDismissBtn" aria-label="Dispensar">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+  `;
+  $('#reorderBtn').addEventListener('click', () => {
+    repeatLastOrder();
+    container.innerHTML = '';
+    openDrawer('cart');
+  });
+  $('#reorderDismissBtn').addEventListener('click', () => {
+    container.innerHTML = '';
+  });
+}
+
+/* ----------- COVERAGE FORM WIRING ----------- */
+function setupCoverageForm() {
+  const form = $('#coverageForm');
+  const result = $('#coverageResult');
+  if (!form) return;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const q = $('#coverageInput').value.trim();
+    result.classList.remove('show', 'ok', 'no');
+    if (!q) return;
+    const res = checkCoverage(q);
+    if (!res) {
+      result.classList.add('show', 'no');
+      result.innerHTML = `🤔 Não conseguimos identificar. Mande seu CEP completo (8 dígitos) ou nome do bairro pelo WhatsApp para confirmarmos.`;
+    } else if (res.ok) {
+      result.classList.add('show', 'ok');
+      result.innerHTML = `✅ <strong>Sim, atendemos sua região!</strong> Entrega em ${DELIVERY_TIME}.`;
+    } else {
+      result.classList.add('show', 'no');
+      result.innerHTML = `❌ Ainda não atendemos esse bairro. <a href="https://wa.me/${WHATSAPP_NUMBER}" target="_blank" style="color:#9b2222;text-decoration:underline;font-weight:800;">Fale conosco</a> para confirmar.`;
+    }
+  });
+}
+
+/* ----------- SEARCH ----------- */
+$('#searchInput').addEventListener('input', (e) => {
+  state.search = e.target.value;
+  renderGrid();
+});
+
+/* ----------- WIRING ----------- */
+$('#cartOpenBtn').addEventListener('click', () => openDrawer('cart'));
+$('#drawerCloseBtn').addEventListener('click', closeDrawer);
+$('#modalCloseBtn').addEventListener('click', closeProductModal);
+$('#modalBackdrop').addEventListener('click', () => {
+  if ($('#productModal').classList.contains('open')) closeProductModal();
+  if ($('#drawer').classList.contains('open')) closeDrawer();
+});
+$('#alertBackdrop').addEventListener('click', () => {
+  if ($('#closedAlert').classList.contains('open')) closeClosedAlert();
+  if ($('#gasPovoModal').classList.contains('open')) closeGasPovoModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if ($('#gasPovoModal').classList.contains('open')) closeGasPovoModal();
+    else if ($('#closedAlert').classList.contains('open')) closeClosedAlert();
+    else if ($('#productModal').classList.contains('open')) closeProductModal();
+    else if ($('#drawer').classList.contains('open')) closeDrawer();
+  }
+});
+
+// Gás do Povo: seal in hero opens info popup
+$('#gasPovoSealBtn').addEventListener('click', openGasPovoModal);
+$('#gpModalCloseBtn').addEventListener('click', closeGasPovoModal);
+$('#gpModalOkBtn').addEventListener('click', closeGasPovoModal);
+
+/* ----------- INIT ----------- */
+$('#year').textContent = new Date().getFullYear();
+renderTabs();
+renderGrid();
+renderStatusBadges();
+setInterval(renderStatusBadges, 60_000); // refresh every minute
+renderTestimonials();
+renderFaq();
+setupCoverageForm();
+renderCartUI();
+
+// Show "we're closed" heads-up popup once per page load if the store is closed
+(function showClosedOnLoad() {
+  const { isOpen } = getStoreStatus();
+  if (!isOpen && !pageLoadAlertShown) {
+    pageLoadAlertShown = true;
+    setTimeout(() => openClosedAlert('pageload'), 600);
+  }
+})();
+</script>
+
+</body>
+</html>
