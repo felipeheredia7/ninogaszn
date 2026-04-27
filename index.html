@@ -1080,11 +1080,13 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
 .info-modal-body {
   padding: 22px 24px 6px;
   overflow-y: auto;
+  text-align: left;
 }
 .info-modal-body p {
   color: var(--muted);
   font-size: 13.5px; line-height: 1.55;
   margin-bottom: 12px;
+  text-align: left;
 }
 .info-modal-body p strong { color: var(--text); font-weight: 700; }
 .info-checklist {
@@ -1096,6 +1098,12 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
   display: flex; align-items: flex-start; gap: 10px;
   font-size: 13px; line-height: 1.45;
   color: var(--text);
+  text-align: left;
+}
+.info-checklist li > span {
+  flex: 1;
+  min-width: 0;
+  text-align: left;
 }
 .info-checklist li::before {
   content: '✓';
@@ -1135,7 +1143,70 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
   .info-modal-actions { flex-direction: column-reverse; }
 }
 
+/* ============ EMPTY GALÃO CHECKBOX (Água 20L) ============ */
+.galao-check {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  padding: 12px 14px;
+  background: linear-gradient(135deg, #eaf4ff 0%, #dceaf9 100%);
+  border: 1.5px solid var(--blue-100);
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  transition: border-color .15s, background .15s;
+}
+.galao-check:hover { border-color: var(--blue-500); }
+.galao-check input {
+  width: 20px; height: 20px;
+  accent-color: var(--blue-500);
+  flex-shrink: 0;
+  margin-top: 1px;
+  cursor: pointer;
+}
+.galao-check .gc-text { line-height: 1.3; flex: 1; min-width: 0; }
+.galao-check .gc-title {
+  font-weight: 800; font-size: 13.5px;
+  color: var(--blue-700);
+  display: block;
+  margin-bottom: 2px;
+}
+.galao-check .gc-hint {
+  font-size: 11.5px; color: var(--muted);
+  font-weight: 500;
+}
+
+/* Cart drawer compact toggle */
+.cart-galao-toggle {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px;
+  background: var(--blue-50);
+  border: 1px solid var(--blue-100);
+  border-radius: 9px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  user-select: none;
+}
+.cart-galao-toggle input {
+  width: 18px; height: 18px;
+  accent-color: var(--blue-500);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.cart-galao-toggle .ct-text {
+  font-size: 12.5px; font-weight: 700;
+  color: var(--blue-700);
+  line-height: 1.3;
+}
+.cart-galao-toggle .ct-text small {
+  display: block;
+  font-weight: 500; font-size: 11px;
+  color: var(--muted);
+  margin-top: 1px;
+}
+
 /* ============ TOAST ============ */
+.toast {
   position: fixed; bottom: 90px; left: 50%;
   transform: translateX(-50%) translateY(20px);
   background: var(--blue-700); color: #fff;
@@ -1444,6 +1515,19 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
   font-weight: 800;
   color: var(--blue-700);
   font-size: 13px;
+  position: relative;
+}
+.testimonial .avatar .avatar-initial {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  background: linear-gradient(135deg, var(--blue-50) 0%, var(--blue-100) 100%);
+  z-index: 1;
+}
+.testimonial .avatar img {
+  position: relative;
+  z-index: 2;
+  width: 100%; height: 100%;
+  object-fit: cover;
 }
 .testimonial .author-info { line-height: 1.2; min-width: 0; }
 .testimonial .author-name { font-weight: 800; font-size: 13px; }
@@ -1861,10 +1945,10 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
   <div class="info-modal-body">
     <p>Você selecionou o pagamento pelo <strong>programa Gás do Povo</strong>. Para concluirmos a entrega com esse benefício, é obrigatório que:</p>
     <ul class="info-checklist">
-      <li>Você esteja inscrito no <strong>CadÚnico</strong> (Cadastro Único do Governo Federal)</li>
-      <li>Os dados estejam <strong>atualizados nos últimos 24 meses</strong></li>
-      <li>Você seja <strong>beneficiário ativo</strong> do Auxílio Gás (consulte em gasdopovo.mds.gov.br)</li>
-      <li>Informe seu <strong>CPF</strong> no campo do checkout para validarmos</li>
+      <li><span>Você esteja inscrito no <strong>CadÚnico</strong> (Cadastro Único do Governo Federal)</span></li>
+      <li><span>Os dados estejam <strong>atualizados nos últimos 24 meses</strong></span></li>
+      <li><span>Você seja <strong>beneficiário ativo</strong> do Auxílio Gás (consulte em gasdopovo.mds.gov.br)</span></li>
+      <li><span>Informe seu <strong>CPF</strong> no campo do checkout para validarmos</span></li>
     </ul>
     <p style="font-size:12px; color:var(--muted-2); border-left:3px solid var(--border-2); padding-left:10px; margin-top:14px;">
       Se o cadastro estiver desatualizado ou você não for beneficiário ativo, o pagamento não poderá ser concluído por essa forma. Procure o CRAS mais próximo para atualizar seus dados.
@@ -1877,6 +1961,39 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
     </a>
     <button type="button" class="btn btn-gov" id="gpModalOkBtn">
       Entendi, vou continuar
+    </button>
+  </div>
+</div>
+
+<!-- ============ INFO POPUP (Galão Vasilhame) ============ -->
+<div class="info-modal" id="galaoModal" role="dialog" aria-modal="true" aria-labelledby="galaoModalTitle">
+  <button class="info-modal-close" id="galaoModalCloseBtn" aria-label="Fechar">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+  </button>
+  <div class="info-modal-hero" style="background: linear-gradient(135deg, var(--blue-500) 0%, var(--blue-700) 100%);">
+    <span class="info-eyebrow" style="background: rgba(255,255,255,.16); border-color: rgba(255,255,255,.28); color: #ffd180;">💧 Vasilhame Adicionado</span>
+    <div class="info-icon" style="background: rgba(255,255,255,.96); padding: 10px;">
+      <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="#0a4ea3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2h6v3H9z"/><path d="M9 5c0 0-3 4-3 9a6 6 0 0 0 12 0c0-5-3-9-3-9"/><path d="M12 11v5M9.5 13.5h5"/></svg>
+    </div>
+    <h3 id="galaoModalTitle">Adicionamos um vasilhame ao carrinho</h3>
+  </div>
+  <div class="info-modal-body">
+    <p>Você não marcou a opção "<strong>Possuo galão vazio</strong>", então adicionamos automaticamente um <strong>vasilhame de 20L por R$ 25,00</strong> ao seu pedido.</p>
+    <ul class="info-checklist">
+      <li><span>O vasilhame é necessário na <strong>primeira compra</strong> de água mineral</span></li>
+      <li><span>Tem <strong>data de validade</strong> — guarde a nota fiscal</span></li>
+      <li><span>Nas próximas compras, basta <strong>trocar o vazio pelo cheio</strong></span></li>
+    </ul>
+    <p style="font-size:12px; color:var(--muted-2); border-left:3px solid var(--border-2); padding-left:10px; margin-top:14px;">
+      Se você já tem um galão vazio em casa, clique em "Já tenho galão" abaixo para remover o vasilhame do pedido.
+    </p>
+  </div>
+  <div class="info-modal-actions">
+    <button type="button" class="btn btn-secondary" id="galaoModalRemoveBtn">
+      Já tenho galão vazio
+    </button>
+    <button type="button" class="btn btn-primary" id="galaoModalOkBtn">
+      Entendi, continuar
     </button>
   </div>
 </div>
@@ -2055,6 +2172,18 @@ const PRODUCTS = [
     price: 30.00,
     image: "https://lh3.googleusercontent.com/glsgmb/AMnFcur_RBwlW1jmXiteJq0HtcQKzLRzL2ZGuCmInjjz293OEjC75o8_7mrrKLLCIoAogmofXqOGOvxGE8jcQKXEQQGZdg=s608-k-rw-no-sc0x00ffffff",
     has_variations: false
+  },
+  {
+    // Hidden product — only added programmatically when customer doesn't have empty galão
+    id: "galao-vasilhame",
+    category: "Acessórios",
+    name: "Galão Água Mineral",
+    description: "Vasilhame retornável de 20L necessário para a primeira compra de água mineral. Tem data de validade — guarde a sua nota fiscal e exija galão com mesmo vencimento na recarga.",
+    short_description: "Vasilhame para a primeira compra de água mineral.",
+    price: 25.00,
+    image: "https://lh3.googleusercontent.com/glsgmb/AMnFcur3gmxSXpFWDbE1UBmFZQ72jtxC3AiTMJrGBVozlbsGIZ_4_BPXK22GieTLd0doOmzRYdL8yUg9l07HXXuR9wAMag=s608-k-rw-no-sc0x00ffffff",
+    has_variations: false,
+    hidden: true
   }
 ];
 
@@ -2251,8 +2380,9 @@ function renderStatusBadges() {
 function renderTabs() {
   const tabs = $('#tabs');
   tabs.innerHTML = '';
+  const visibleProducts = PRODUCTS.filter(p => !p.hidden);
   CATEGORIES.forEach(cat => {
-    const count = cat === "Todos" ? PRODUCTS.length : PRODUCTS.filter(p => p.category === cat).length;
+    const count = cat === "Todos" ? visibleProducts.length : visibleProducts.filter(p => p.category === cat).length;
     const btn = document.createElement('button');
     btn.className = 'tab' + (state.category === cat ? ' active' : '');
     btn.setAttribute('role', 'tab');
@@ -2271,6 +2401,7 @@ function renderTabs() {
 function getFilteredProducts() {
   const q = state.search.trim().toLowerCase();
   return PRODUCTS.filter(p => {
+    if (p.hidden) return false;
     const okCat = state.category === "Todos" || p.category === state.category;
     const okQuery = !q ||
       p.name.toLowerCase().includes(q) ||
@@ -2350,10 +2481,15 @@ function renderGrid() {
       e.stopPropagation();
       if (p.has_variations) {
         openProductModal(p);
-      } else {
-        flyToCart(card.querySelector('.card-img img'));
-        addToCart(p, 1, null);
+        return;
       }
+      // Special: Água 20L — open modal so user can choose if they have empty galão
+      if (p.id === AGUA_PRODUCT_ID) {
+        openProductModal(p);
+        return;
+      }
+      flyToCart(card.querySelector('.card-img img'));
+      addToCart(p, 1, null);
     });
     grid.appendChild(card);
   });
@@ -2364,6 +2500,14 @@ function openProductModal(product) {
   state.modalProduct = product;
   state.modalQty = 1;
   state.modalVariation = null;
+  // For Água 20L: pre-fill the checkbox state from cart
+  // If galão is already in cart → checkbox unchecked (means "no, I don't have empty galão")
+  // If galão NOT in cart → checkbox checked (means "yes, I have it")
+  if (product.id === AGUA_PRODUCT_ID) {
+    state.modalHasEmptyGalao = !hasGalaoInCart() && hasAguaInCart() ? true : false;
+  } else {
+    state.modalHasEmptyGalao = false;
+  }
   renderModal();
   $('#modalBackdrop').classList.add('open');
   $('#productModal').classList.add('open');
@@ -2476,6 +2620,23 @@ function renderModal() {
     }
   }
 
+  // Empty galão checkbox — only for Água 20L
+  let galaoCheckBlock = '';
+  if (p.id === AGUA_PRODUCT_ID) {
+    // Default: unchecked (assume customer needs new galão)
+    // But persist state via state.modalHasEmptyGalao
+    const checked = state.modalHasEmptyGalao === true;
+    galaoCheckBlock = `
+      <label class="galao-check" id="galaoCheckLabel">
+        <input type="checkbox" id="galaoCheck" ${checked ? 'checked' : ''} />
+        <div class="gc-text">
+          <span class="gc-title">✓ Possuo galão vazio para troca</span>
+          <span class="gc-hint">Se não marcar, adicionaremos um vasilhame de R$ 25,00 ao seu pedido (necessário na primeira compra).</span>
+        </div>
+      </label>
+    `;
+  }
+
   grid.innerHTML = `
     <div class="modal-img">
       <img src="${p.image}" alt="${p.name}" onerror="this.style.opacity='.4'; this.src='assets/mascote.png';"/>
@@ -2490,6 +2651,8 @@ function renderModal() {
       <div>${priceMarkup}</div>
 
       ${variationHTML}
+
+      ${galaoCheckBlock}
 
       <div class="qty-row">
         <span class="label">Quantidade</span>
@@ -2525,9 +2688,35 @@ function renderModal() {
     });
   }
 
+  // Galão checkbox listener (only when água 20l)
+  const galaoCheckEl = $('#galaoCheck');
+  if (galaoCheckEl) {
+    galaoCheckEl.addEventListener('change', (e) => {
+      state.modalHasEmptyGalao = e.target.checked;
+    });
+  }
+
   $('#modalAddBtn').addEventListener('click', () => {
     if (needsVariation) return;
     addToCart(p, state.modalQty, state.modalVariation);
+
+    // Special: Água 20L — handle the empty-galão flow
+    if (p.id === AGUA_PRODUCT_ID) {
+      if (state.modalHasEmptyGalao === true) {
+        // User confirmed having empty galão → make sure the galão isn't in cart
+        removeGalaoFromCart();
+        renderCartUI();
+      } else {
+        // User did NOT confirm → add galão & show popup if newly added
+        const wasNewlyAdded = ensureGalaoInCart();
+        renderCartUI();
+        if (wasNewlyAdded) {
+          // Defer popup until product modal closes
+          setTimeout(openGalaoModal, 200);
+        }
+      }
+    }
+
     closeProductModal();
   });
 
@@ -2539,6 +2728,55 @@ function renderModal() {
       if (rp) openProductModal(rp);
     });
   });
+}
+
+/* ----------- GALÃO VASILHAME (Água 20L) ----------- */
+const AGUA_PRODUCT_ID = 'agua-20l';
+const GALAO_PRODUCT_ID = 'galao-vasilhame';
+
+function hasAguaInCart() {
+  return state.cart.some(it => it.id === AGUA_PRODUCT_ID);
+}
+function hasGalaoInCart() {
+  return state.cart.some(it => it.id === GALAO_PRODUCT_ID);
+}
+function ensureGalaoInCart() {
+  if (hasGalaoInCart()) return false; // already there
+  const galao = PRODUCTS.find(p => p.id === GALAO_PRODUCT_ID);
+  if (!galao) return false;
+  state.cart.push({
+    uid: GALAO_PRODUCT_ID,
+    id: galao.id,
+    name: galao.name,
+    image: galao.image,
+    unit_price: galao.price,
+    qty: 1,
+    variation: null
+  });
+  saveCart();
+  return true; // newly added
+}
+function removeGalaoFromCart() {
+  const had = hasGalaoInCart();
+  state.cart = state.cart.filter(it => it.id !== GALAO_PRODUCT_ID);
+  if (had) saveCart();
+  return had;
+}
+
+/* Popup */
+function openGalaoModal() {
+  $('#alertBackdrop').classList.add('open');
+  $('#galaoModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeGalaoModal() {
+  $('#galaoModal').classList.remove('open');
+  if (!$('#closedAlert').classList.contains('open') && !$('#gasPovoModal').classList.contains('open')) {
+    $('#alertBackdrop').classList.remove('open');
+    const drawerOpen = $('#drawer').classList.contains('open');
+    const productOpen = $('#productModal').classList.contains('open');
+    if (!drawerOpen && !productOpen) document.body.style.overflow = '';
+  }
 }
 
 /* ----------- FLY-TO-CART ANIMATION ----------- */
@@ -2604,11 +2842,20 @@ function updateCartQty(uid, delta) {
   if (item.qty <= 0) {
     state.cart = state.cart.filter(it => it.uid !== uid);
   }
+  // Auto-remove galão vasilhame if no água remains
+  if (item.id === AGUA_PRODUCT_ID && !hasAguaInCart()) {
+    state.cart = state.cart.filter(it => it.id !== GALAO_PRODUCT_ID);
+  }
   saveCart();
   renderCartUI();
 }
 function removeFromCart(uid) {
+  const item = state.cart.find(it => it.uid === uid);
   state.cart = state.cart.filter(it => it.uid !== uid);
+  // Auto-remove galão vasilhame if no água remains
+  if (item && item.id === AGUA_PRODUCT_ID && !hasAguaInCart()) {
+    state.cart = state.cart.filter(it => it.id !== GALAO_PRODUCT_ID);
+  }
   saveCart();
   renderCartUI();
 }
@@ -2695,8 +2942,23 @@ function renderDrawer() {
       </div>
     `).join('');
 
+    // Empty galão toggle — show only when água 20L is in cart
+    let galaoToggleHTML = '';
+    if (hasAguaInCart()) {
+      const checked = !hasGalaoInCart();
+      galaoToggleHTML = `
+        <label class="cart-galao-toggle" for="cartGalaoToggle">
+          <input type="checkbox" id="cartGalaoToggle" ${checked ? 'checked' : ''} />
+          <span class="ct-text">
+            Possuo galão vazio para troca
+            <small>${checked ? 'Sem custo extra de vasilhame' : 'Vasilhame de R$ 25,00 incluído no pedido'}</small>
+          </span>
+        </label>
+      `;
+    }
+
     content.innerHTML = `
-      <div class="drawer-body">${itemsHTML}</div>
+      <div class="drawer-body">${galaoToggleHTML}${itemsHTML}</div>
       <div class="drawer-foot">
         <div class="subtotal-row">
           <span class="label">Subtotal</span>
@@ -2711,6 +2973,23 @@ function renderDrawer() {
 
     content.addEventListener('click', drawerClickHandler);
     $('#goCheckoutBtn').addEventListener('click', () => { state.drawerView = 'checkout'; renderDrawer(); });
+
+    // Wire the galão toggle
+    const tg = $('#cartGalaoToggle');
+    if (tg) {
+      tg.addEventListener('change', (e) => {
+        if (e.target.checked) {
+          // User says "I have empty galão" → remove vasilhame
+          removeGalaoFromCart();
+          renderCartUI();
+        } else {
+          // User says "I don't have empty galão" → add vasilhame back + popup
+          const added = ensureGalaoInCart();
+          renderCartUI();
+          if (added) setTimeout(openGalaoModal, 150);
+        }
+      });
+    }
   } else {
     // Checkout view
     titleText.textContent = 'Finalizar pedido';
@@ -3122,18 +3401,28 @@ function closeClosedAlert() {
 }
 
 /* ----------- TESTIMONIALS ----------- */
+function nameToFilename(name) {
+  return name
+    .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // strip accents
+    .replace(/\./g, '')                                // remove periods
+    .replace(/\s+/g, '_');                             // spaces → underscores
+}
 function renderTestimonials() {
   const grid = $('#testimonialsGrid');
   if (!grid) return;
   grid.innerHTML = TESTIMONIALS.map(t => {
     const initial = t.name.charAt(0).toUpperCase();
     const stars = '★'.repeat(t.rating) + '☆'.repeat(5 - t.rating);
+    const filename = nameToFilename(t.name);
     return `
       <div class="testimonial">
         <div class="stars">${stars}</div>
         <p class="quote">"${t.text}"</p>
         <div class="author">
-          <div class="avatar">${initial}</div>
+          <div class="avatar">
+            <span class="avatar-initial">${initial}</span>
+            <img src="assets/${filename}.jpg" alt="${t.name}" onerror="this.remove();" />
+          </div>
           <div class="author-info">
             <div class="author-name">${t.name}</div>
             <div class="author-loc">${t.location}</div>
@@ -3242,10 +3531,12 @@ $('#modalBackdrop').addEventListener('click', () => {
 $('#alertBackdrop').addEventListener('click', () => {
   if ($('#closedAlert').classList.contains('open')) closeClosedAlert();
   if ($('#gasPovoModal').classList.contains('open')) closeGasPovoModal();
+  if ($('#galaoModal').classList.contains('open')) closeGalaoModal();
 });
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
-    if ($('#gasPovoModal').classList.contains('open')) closeGasPovoModal();
+    if ($('#galaoModal').classList.contains('open')) closeGalaoModal();
+    else if ($('#gasPovoModal').classList.contains('open')) closeGasPovoModal();
     else if ($('#closedAlert').classList.contains('open')) closeClosedAlert();
     else if ($('#productModal').classList.contains('open')) closeProductModal();
     else if ($('#drawer').classList.contains('open')) closeDrawer();
@@ -3256,6 +3547,16 @@ document.addEventListener('keydown', (e) => {
 $('#gasPovoSealBtn').addEventListener('click', openGasPovoModal);
 $('#gpModalCloseBtn').addEventListener('click', closeGasPovoModal);
 $('#gpModalOkBtn').addEventListener('click', closeGasPovoModal);
+
+// Galão Vasilhame popup wiring
+$('#galaoModalCloseBtn').addEventListener('click', closeGalaoModal);
+$('#galaoModalOkBtn').addEventListener('click', closeGalaoModal);
+$('#galaoModalRemoveBtn').addEventListener('click', () => {
+  removeGalaoFromCart();
+  renderCartUI();
+  closeGalaoModal();
+  showToast('✓ Vasilhame removido do carrinho');
+});
 
 /* ----------- INIT ----------- */
 $('#year').textContent = new Date().getFullYear();
